@@ -13,7 +13,9 @@ public class ProfesorService implements GenericService<Profesor, Long> {
 
     List<Profesor> profesores = new ArrayList<>(
             Arrays.asList(new Profesor(1l, "Nombre Prueba", "Apellido Prueba", "Correo Prueba",
-                    "1234", "Profesor de prueba", new ArrayList<Curso>()))
+                    "1234", "Profesor de prueba", new ArrayList<Curso>()),
+                    new Profesor(2l, "Nombre Prueba", "Apellido Prueba", "Correo Prueba",
+                            "1234", "Profesor de prueba", new ArrayList<Curso>()))
     );
 
     @Override

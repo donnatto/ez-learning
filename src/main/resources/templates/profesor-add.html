@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>plantilla de prueba para agregar profesores</title>
+</head>
+<body>
+<h3>Agregar Profesores</h3>
+
+<div>
+
+    <form action="#" method="post"
+          th:object="${profesor}"
+          th:action="@{/profesores/save}"
+    >
+
+        <div class="form-group">
+            <label for="id_profesor">id_profesor</label>
+            <input type="text" class="class-controller"
+                   id="id_profesor" placeholder="ingrese el numero de documento"
+                   th:field="*{id_profesor}"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="nom_profesor">nom_profesor</label>
+            <input type="text" class="class-controller"
+                   id="nom_profesor" placeholder="ingrese el nombre"
+                   th:field="*{nom_profesor}"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="ape_profesor">ape_profesor</label>
+            <input type="text" class="class-controller"
+                   id="ape_profesor" placeholder="ingrese el apellido"
+                   th:field="*{ape_profesor}"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="correo_profesor">correo_profesor</label>
+            <input type="text" class="class-controller"
+                   id="correo_profesor" placeholder="ingrese el correo"
+                   th:field="*{correo_profesor}"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="clave_profesor">clave_profesor</label>
+            <input type="text" class="class-controller"
+                   id="clave_profesor" placeholder="clave_profesor"
+                   th:field="*{clave_profesor}"
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="descripcion_profesor">descripcion_profesor</label>
+            <input type="text" class="class-controller"
+                   id="descripcion_profesor" placeholder="descripcion_profesor"
+                   th:field="*{descripcion_profesor}"
+            >
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Agregar Profesor
+        </button>
+
+
+    </form>
+
+
+</div>
+</body>
+</html>
