@@ -27,7 +27,13 @@
 
                 <td class="text-right">
                     <div class="btn-group">
+                        <a th:href="@{/profesores/edit/{id_profesor}
+                                    (id_profesor=${profesor.id_profesor})}"
+                           class="btn btn-primary btn-sm">Editar</a>
 
+                        <a th:href="@{/profesores/delete/{id_profesor}
+                                (id_profesor=${profesor.id_profesor})}"
+                           class="btn btn-danger btn-sm">Eliminar</a>
 
 
                     </div>
