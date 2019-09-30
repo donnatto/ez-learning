@@ -23,21 +23,28 @@ public class ProfesorService implements GenericService<Profesor, Long> {
 
     @Override
     public void update(Profesor profesor) {
-
+        Profesor profesorActual = findById(profesor.getId_profesor());
+        if (profesorActual != null) {
+            int index = profesores.indexOf(profesorActual);
+            profesor.setId_profesor(profesorActual.getId_profesor());
+            profesores.set(index, profesor);
+        }
     }
 
     @Override
     public void delete(Profesor profesor) {
-
+        profesores.remove(profesor);
     }
 
     @Override
     public List<Profesor> findAll() {
-        return null;
+        return profesores;
     }
 
     @Override
-    public Profesor findById(Long aLong) {
-        return null;
+    public Profesor findById(Long id_profesor) {
+        Profesor profesor = profesores.stream()
+                .filter(p -> p.getId_profesor() == id_profesor).findFirst().orElse(null);
+        return profesor;
     }
 }
