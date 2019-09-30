@@ -29,9 +29,9 @@ public class ProfesorController {
                                Model model) {
         profesorService.create(profesor);
 
-        List<Profesor> profesores = profesorService.findAll();
+        List<Profesor> profesores = profesorService.getAll();
         model.addAttribute("profesores", profesores);
-        return "profesores";
+        return "redirect:/profesores";
     }
 
     @GetMapping("/profesores/edit/{id_profesor}")
@@ -48,15 +48,15 @@ public class ProfesorController {
                                  Model model){
         profesorService.update(profesor);
 
-        List<Profesor> profesores = profesorService.findAll();
+        List<Profesor> profesores = profesorService.getAll();
         model.addAttribute("profesores", profesores);
-        return "profesores";
+        return "redirect:/profesores";
     }
 
     @GetMapping("/profesores")
     public String getProfesoresList(Model model) {
 
-        List<Profesor> profesores = profesorService.findAll();
+        List<Profesor> profesores = profesorService.getAll();
         model.addAttribute("profesores", profesores);
         return "profesores";
     }
@@ -69,8 +69,8 @@ public class ProfesorController {
             profesorService.delete(profesorActual);
         }
 
-        List<Profesor> profesores = profesorService.findAll();
+        List<Profesor> profesores = profesorService.getAll();
         model.addAttribute("profesores", profesores);
-        return "profesores";
+        return "redirect:/profesores";
     }
 }
