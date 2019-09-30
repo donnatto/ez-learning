@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>plantilla de prueba para profesores</title>
+</head>
+<body>
+<div th:switch="profesores" >
+    <div th:case="*">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">id_profesor</th>
+                <th scope="col">ape_profesor</th>
+                <th scope="col">nom_profesor</th>
+                <th scope="col">correo_profesor</th>
+                <th scope="col">descripcion_profesor</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="profesor : ${profesores}">
+                <th scope="row" th:text="${profesor.id_profesor}" ></th>
+                <td th:text="${profesor.nom_profesor}"></td>
+                <td th:text="${profesor.ape_profesor}"></td>
+                <td th:text="${profesor.correo_profesor}"></td>
+                <td th:text="${profesor.descripcion_profesor}"></td>
+
+                <td class="text-right">
+                    <div class="btn-group">
+
+
+
+                    </div>
+                </td>
+
+            </tr>
+            </tbody>
+
+        </table>
+
+
+    </div>
+
+</div>
+</body>
+</html>
