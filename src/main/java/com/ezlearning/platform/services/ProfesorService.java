@@ -12,10 +12,10 @@ import java.util.List;
 public class ProfesorService implements GenericService<Profesor, Long> {
 
     List<Profesor> profesores = new ArrayList<>(
-            Arrays.asList(new Profesor(1l, "Nombre Prueba", "Apellido Prueba", "Correo Prueba",
-                    "1234", "Profesor de prueba", new ArrayList<Curso>()),
-                    new Profesor(2l, "Nombre Prueba", "Apellido Prueba", "Correo Prueba",
-                            "1234", "Profesor de prueba", new ArrayList<Curso>()))
+            Arrays.asList(new Profesor(1L, "Esteban", "Fernandez", "efernandez@gmail.com",
+                    "1234", "Profesor de Java", new ArrayList<Curso>()),
+                    new Profesor(2L, "Juana", "Magdalena", "jmagdalena@outlook.com",
+                            "1234", "Profesora de UX", new ArrayList<Curso>()))
     );
 
     @Override
@@ -24,11 +24,16 @@ public class ProfesorService implements GenericService<Profesor, Long> {
     }
 
     @Override
+    public List<Profesor> getAll() {
+        return profesores;
+    }
+
+    @Override
     public void update(Profesor profesor) {
-        Profesor profesorActual = findById(profesor.getId_profesor());
-        if (profesorActual != null) {
-            int index = profesores.indexOf(profesorActual);
-            profesor.setId_profesor(profesorActual.getId_profesor());
+        Profesor currentProfesor = findById(profesor.getId_profesor());
+        if (currentProfesor != null) {
+            int index = profesores.indexOf(currentProfesor);
+            profesor.setId_profesor(currentProfesor.getId_profesor());
             profesores.set(index, profesor);
         }
     }
@@ -36,11 +41,6 @@ public class ProfesorService implements GenericService<Profesor, Long> {
     @Override
     public void delete(Profesor profesor) {
         profesores.remove(profesor);
-    }
-
-    @Override
-    public List<Profesor> findAll() {
-        return profesores;
     }
 
     @Override

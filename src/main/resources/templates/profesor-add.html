@@ -1,75 +1,115 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>plantilla de prueba para agregar profesores</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Nuevo Profesor | Ez Learning</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-<h3>Agregar Profesores</h3>
-
-<div>
-
-    <form action="#" method="post"
-          th:object="${profesor}"
-          th:action="@{/profesores/save}"
-    >
-
-        <div class="form-group">
-            <label for="id_profesor">id_profesor</label>
-            <input type="text" class="class-controller"
-                   id="id_profesor" placeholder="ingrese el numero de documento"
-                   th:field="*{id_profesor}"
+<div class="container">
+    <h3 class="center">Nuevo Profesor</h3>
+    <br>
+    <div class="row">
+        <div class="section col s12 l6 offset-l3">
+            <form action="#" method="post"
+                  th:object="${profesor}"
+                  th:action="@{/profesores/save}"
             >
+
+                <div class="input-field">
+                    <label for="id_profesor">Id</label>
+                    <input type="text" class="class-controller"
+                           id="id_profesor"
+                           th:field="*{id_profesor}"
+                    >
+                </div>
+
+                <div class="input-field">
+                    <label for="nom_profesor">Nombre</label>
+                    <input type="text" class="class-controller"
+                           id="nom_profesor"
+                           th:field="*{nom_profesor}"
+                    >
+                </div>
+
+                <div class="input-field">
+                    <label for="ape_profesor">Apellido</label>
+                    <input type="text" class="class-controller"
+                           id="ape_profesor"
+                           th:field="*{ape_profesor}"
+                    >
+                </div>
+
+                <div class="input-field">
+                    <label for="correo_profesor">Correo Electrónico</label>
+                    <input type="text" class="class-controller"
+                           id="correo_profesor"
+                           th:field="*{correo_profesor}"
+                    >
+                </div>
+
+                <div class="input-field">
+                    <label for="clave_profesor">Clave</label>
+                    <input type="password" class="class-controller"
+                           id="clave_profesor"
+                           th:field="*{clave_profesor}"
+                    >
+                </div>
+
+                <div class="input-field">
+                    <label for="descripcion_profesor">Descripción</label>
+                    <input type="text" class="class-controller"
+                           id="descripcion_profesor"
+                           th:field="*{descripcion_profesor}"
+                    >
+                </div>
+
+                <button type="submit" class="btn">
+                    Confirmar
+                </button>
+                <a th:href="@{/profesores}" class="btn red lighten-1">Atras</a>
+
+            </form>
         </div>
-
-        <div class="form-group">
-            <label for="nom_profesor">nom_profesor</label>
-            <input type="text" class="class-controller"
-                   id="nom_profesor" placeholder="ingrese el nombre"
-                   th:field="*{nom_profesor}"
-            >
-        </div>
-
-        <div class="form-group">
-            <label for="ape_profesor">ape_profesor</label>
-            <input type="text" class="class-controller"
-                   id="ape_profesor" placeholder="ingrese el apellido"
-                   th:field="*{ape_profesor}"
-            >
-        </div>
-
-        <div class="form-group">
-            <label for="correo_profesor">correo_profesor</label>
-            <input type="text" class="class-controller"
-                   id="correo_profesor" placeholder="ingrese el correo"
-                   th:field="*{correo_profesor}"
-            >
-        </div>
-
-        <div class="form-group">
-            <label for="clave_profesor">clave_profesor</label>
-            <input type="text" class="class-controller"
-                   id="clave_profesor" placeholder="clave_profesor"
-                   th:field="*{clave_profesor}"
-            >
-        </div>
-
-        <div class="form-group">
-            <label for="descripcion_profesor">descripcion_profesor</label>
-            <input type="text" class="class-controller"
-                   id="descripcion_profesor" placeholder="descripcion_profesor"
-                   th:field="*{descripcion_profesor}"
-            >
-        </div>
-
-        <button type="submit" class="btn btn-primary">
-            Agregar Profesor
-        </button>
-
-
-    </form>
-
-
+    </div>
 </div>
+
+<footer class="page-footer teal">
+    <div class="container">
+        <div class="row">
+            <div class="col l8 s12">
+                <h5 class="white-text">Ez Learning</h5>
+                <p class="grey-text text-lighten-4">Somos un grupo de estudiantes que estamos desarrollando este
+                    proyecto como parte
+                    de nuestra formación profesional. Cualquier sugerencia será muy bien apreciada.</p>
+
+
+            </div>
+            <div class="col l4 s12">
+                <h5 class="white-text">Github</h5>
+                <p class="grey-text text-lighten-4">Puedes encontrar a continuación el <a
+                        href="https://github.com/donnatto/ez-learning" target="_blank"
+                        class="purple-text text-darken-4"><strong>repositorio del proyecto.</strong>
+                </a></p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2019 Ez Learning
+        </div>
+    </div>
+</footer>
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.js"></script>
+<script src="/js/init.js"></script>
 </body>
 </html>

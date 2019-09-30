@@ -10,7 +10,7 @@ public interface GenericService<T, K> {
 
     void delete(T t);
 
-    List<T> findAll();
+    List<T> getAll();
 
     T findById(K k);
 
