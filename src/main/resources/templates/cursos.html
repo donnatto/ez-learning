@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Docentes | Ez Learning</title>
+    <title>Cursos | Ez Learning</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -38,52 +38,47 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <br><br>
-                <h1 class="header center white-text">Profesores</h1>
+                <h1 class="header center white-text">Cursos</h1>
                 <div class="row center">
-                    <h5 class="header col s12 light">Se parte de nuestro gran staff de profesores</h5>
+                    <h5 class="header col s12 light">Mira los cursos que tenemos para ti</h5>
                 </div>
                 <br>
                 <div class="row center">
-                    <a th:href="@{/profesores/add}" class="waves-effect waves-light btn-large">Únete
-                        a Nosotros</a>
+                    <a th:href="@{/cursos/add}" class="waves-effect waves-light btn-large">Añade un Curso</a>
                 </div>
                 <br><br>
             </div>
         </div>
-        <div class="parallax"><img src="/img/docentes.jpg" alt="Unsplash teachers background"></div>
+        <div class="parallax"><img src="/img/cursos.jpg" alt="Unsplash courses background"></div>
     </div>
     <div class="section">
-        <div th:switch="profesores" class="container">
+        <div th:switch="cursos" class="container">
             <div th:case="*" class="row">
                 <div class="col s12 center">
-                    <h4>Lista de Profesores</h4>
+                    <h4>Listado de Cursos</h4>
                     <br>
                     <table class="highlight responsive-table">
                         <thead>
                         <tr>
                             <th scope="col">id</th>
-                            <th scope="col">Apellido</th>
-                            <th scope="col">Nombres</th>
-                            <th scope="col">E-mail</th>
+                            <th scope="col">Curso</th>
                             <th scope="col">Descripción</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="profesor : ${profesores}">
-                            <th scope="row" th:text="${profesor.id_profesor}"></th>
-                            <td th:text="${profesor.nom_profesor}"></td>
-                            <td th:text="${profesor.ape_profesor}"></td>
-                            <td th:text="${profesor.correo_profesor}"></td>
-                            <td th:text="${profesor.descripcion_profesor}"></td>
+                        <tr th:each="curso : ${cursos}">
+                            <th scope="row" th:text="${curso.id_curso}"></th>
+                            <td th:text="${curso.nom_curso}"></td>
+                            <td th:text="${curso.descripcion_curso}"></td>
 
                             <td>
                                 <div>
-                                    <a th:href="@{/profesores/edit/{id_profesor}
-                                    (id_profesor=${profesor.id_profesor})}"
+                                    <a th:href="@{/cursos/edit/{id_curso}
+                                    (id_curso=${curso.id_curso})}"
                                        class="waves-effect waves-light btn-small">Editar
                                     </a>
-                                    <a th:href="@{/profesores/delete/{id_profesor}
-                                (id_profesor=${profesor.id_profesor})}"
+                                    <a th:href="@{/cursos/delete/{id_curso}
+                                (id_curso=${curso.id_curso})}"
                                        class="waves-effect waves-light btn-small red lighten-1">Eliminar
                                     </a>
                                 </div>
