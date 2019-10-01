@@ -17,13 +17,13 @@
             <a id="logo-container" href="/" class="brand-logo white-text">Ez Learning</a>
             <ul class="right hide-on-med-and-down">
                 <li><a th:href="@{/cursos}" class="white-text">Cursos</a></li>
-                <li><a th:href="@{/profesores}" class="white-text">Docentes</a></li>
+                <li><a th:href="@{/profesores}" class="white-text">Profesores</a></li>
                 <li><a href="#" class="white-text">Ingresar</a></li>
             </ul>
 
             <ul id="nav-mobile" class="sidenav teal darken-2">
                 <li><a th:href="@{/cursos}" class="white-text">Cursos</a></li>
-                <li><a th:href="@{/profesores}" class="white-text">Docentes</a></li>
+                <li><a th:href="@{/profesores}" class="white-text">Profesores</a></li>
                 <li><a href="#" class="white-text">Ingresar</a></li>
             </ul>
             <a href="#" data-target="nav-mobile" class="sidenav-trigger white-text"><i
@@ -43,7 +43,7 @@
                 </div>
                 <br>
                 <div class="row center">
-                    <a href="http://materializecss.com/getting-started.html" class="waves-effect waves-light btn-large">Descúbrela</a>
+                    <a th:href="@{/discover}" class="waves-effect waves-light btn-large">Descúbrela</a>
                 </div>
                 <br><br>
             </div>
