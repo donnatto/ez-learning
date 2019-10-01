@@ -12,4 +12,9 @@ public class Index {
     public String index() {
         return "index";
     }
+
+    @GetMapping("/discover")
+    public String discover() {
+        return "discover";
+    }
 }
