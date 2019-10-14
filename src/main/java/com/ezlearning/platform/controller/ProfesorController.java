@@ -14,8 +14,12 @@ import java.util.List;
 @Controller
 public class ProfesorController {
 
+    private ProfesorService profesorService;
+
     @Autowired
-    ProfesorService profesorService;
+    public ProfesorController(ProfesorService profesorService) {
+        this.profesorService = profesorService;
+    }
 
     @GetMapping("/profesores/add")
     public String addProfesor(Model model) {

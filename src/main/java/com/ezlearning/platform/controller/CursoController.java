@@ -14,8 +14,13 @@ import java.util.List;
 @Controller
 public class CursoController{
 
+    private CursoService cursoService;
+
     @Autowired
-    CursoService cursoService;
+    public CursoController(CursoService cursoService) {
+        super();
+        this.cursoService = cursoService;
+    }
 
     @GetMapping("/cursos/add")
     public String addCurso(Model model) {
