@@ -8,10 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
 @Controller
+@RequestMapping("/profesores")
 public class ProfesorController {
 
     private ProfesorService profesorService;
@@ -21,13 +23,13 @@ public class ProfesorController {
         this.profesorService = profesorService;
     }
 
-    @GetMapping("/profesores/add")
+    @GetMapping("/add")
     public String addProfesor(Model model) {
         model.addAttribute("profesor", new Profesor());
         return "profesor-add";
     }
 
-    @PostMapping("/profesores/save")
+    @PostMapping("/save")
     public String saveProfesor(Profesor profesor,
                                Model model) {
         profesorService.create(profesor);
@@ -37,7 +39,7 @@ public class ProfesorController {
         return "redirect:/profesores";
     }
 
-    @GetMapping("/profesores/edit/{id_profesor}")
+    @GetMapping("/edit/{id_profesor}")
     public String getProfesorForUpdate(@PathVariable Long id_profesor,
                                        Model model) {
         Profesor profesorActual = profesorService.findById(id_profesor);
@@ -45,7 +47,7 @@ public class ProfesorController {
         return "profesor-edit";
     }
 
-    @PostMapping("/profesores/update/{id_profesor}")
+    @PostMapping("/update/{id_profesor}")
     public String updateProfesor(@PathVariable Long id_profesor,
                                  Profesor profesor,
                                  Model model){
@@ -56,7 +58,7 @@ public class ProfesorController {
         return "redirect:/profesores";
     }
 
-    @GetMapping("/profesores")
+    @GetMapping
     public String getProfesoresList(Model model) {
 
         List<Profesor> profesores = profesorService.getAll();
@@ -64,7 +66,7 @@ public class ProfesorController {
         return "profesores";
     }
 
-    @GetMapping("/profesores/delete/{id_profesor}")
+    @GetMapping("/delete/{id_profesor}")
     public String deleteProfesor(@PathVariable Long id_profesor,
                                  Model model) {
         Profesor profesorActual = profesorService.findById(id_profesor);
