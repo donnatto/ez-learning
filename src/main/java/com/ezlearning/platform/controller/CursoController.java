@@ -3,6 +3,7 @@ package com.ezlearning.platform.controller;
 import com.ezlearning.platform.model.Curso;
 import com.ezlearning.platform.services.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,6 +57,7 @@ public class CursoController{
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('ROLE_USER')")
     public String getCursosList(Model model) {
         List<Curso> cursos = cursoService.getAll();
         model.addAttribute("cursos", cursos);

@@ -70,20 +70,20 @@
                         </thead>
                         <tbody>
                         <tr th:each="profesor : ${profesores}">
-                            <th scope="row" th:text="${profesor.id_profesor}"></th>
-                            <td th:text="${profesor.nom_profesor}"></td>
-                            <td th:text="${profesor.ape_profesor}"></td>
-                            <td th:text="${profesor.correo_profesor}"></td>
+                            <th scope="row" th:text="${profesor.getUsuario().id_usuario}"></th>
+                            <td th:text="${profesor.getUsuario().nom_usuario}"></td>
+                            <td th:text="${profesor.getUsuario().ape_usuario}"></td>
+                            <td th:text="${profesor.getUsuario().correo_usuario}"></td>
                             <td th:text="${profesor.descripcion_profesor}"></td>
 
                             <td>
                                 <div>
                                     <a th:href="@{/profesores/edit/{id_profesor}
-                                    (id_profesor=${profesor.id_profesor})}"
+                                    (id_profesor=${profesor.getUsuario().id_usuario})}"
                                        class="waves-effect waves-light btn-small">Editar
                                     </a>
                                     <a th:href="@{/profesores/delete/{id_profesor}
-                                (id_profesor=${profesor.id_profesor})}"
+                                (id_profesor=${profesor.getUsuario().id_usuario})}"
                                        class="waves-effect waves-light btn-small red lighten-1">Eliminar
                                     </a>
                                 </div>

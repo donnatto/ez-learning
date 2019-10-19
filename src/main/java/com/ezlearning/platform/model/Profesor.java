@@ -11,17 +11,10 @@ import java.util.List;
 @NoArgsConstructor
 public class Profesor {
 
-    private Long id_profesor;
-
-    private String nom_profesor;
-
-    private String ape_profesor;
-
-    private String correo_profesor;
-
-    private String clave_profesor;
+    private Usuario usuario;
 
     private String descripcion_profesor;
 
     private List<Curso> curso;
+
 }

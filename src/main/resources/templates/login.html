@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Login | Ez Learning</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+<div class="container">
+    <h3 class="center">Login</h3>
+    <br>
+    <div class="row">
+        <div class="section col s12 l6 offset-l3">
+            <form method="post"
+                  th:action="@{/login}"
+            >
+                <div th:if="${param.error}">
+                    <h4 class="center red lighten-1 white-text">Usuario o contraseña invalida</h4>
+                </div>
+
+                <div class="input-field">
+                    <label for="username">Usuario</label>
+                    <input type="text" class="class-controller"
+                           id="username" name="username"
+                    >
+                </div>
+
+                <div class="input-field">
+                    <label for="password">Contraseña</label>
+                    <input type="password" class="class-controller"
+                           id="password" name="password"
+                    >
+                </div>
+
+                <button type="submit" class="btn">
+                    Ingresar
+                </button>
+                <a th:href="@{/index}" class="btn red lighten-1">Atras</a>
+
+            </form>
+        </div>
+    </div>
+</div>
+<br><br>
+<footer class="page-footer teal">
+    <div class="container">
+        <div class="row">
+            <div class="col l8 s12">
+                <h5 class="white-text">Ez Learning</h5>
+                <p class="grey-text text-lighten-4">Somos un grupo de estudiantes que estamos desarrollando este
+                    proyecto como parte
+                    de nuestra formación profesional. Cualquier sugerencia será muy bien apreciada.</p>
+
+
+            </div>
+            <div class="col l4 s12">
+                <h5 class="white-text">Github</h5>
+                <p class="grey-text text-lighten-4">Puedes encontrar a continuación el <a
+                        href="https://github.com/donnatto/ez-learning" target="_blank"
+                        class="purple-text text-darken-4"><strong>repositorio del proyecto.</strong>
+                </a></p>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            © 2019 Ez Learning
+        </div>
+    </div>
+</footer>
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.js"></script>
+<script src="/js/init.js"></script>
+</body>
+</html>
