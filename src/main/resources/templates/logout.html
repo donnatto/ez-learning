@@ -1,18 +1,26 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:insert="/fragments/head">
     <title>Logout</title>
 </head>
 <body>
+<header th:insert="/fragments/header"></header>
 
-<div>
+<main>
     <div class="container main-content">
         <ul class="list-group">
             <li class="list-group-item list-group-item-info"><h3>Te desconectaste sin problemas</h3></li>
         </ul>
         <a th:href="@{/index}">Inicio</a>
     </div>
-</div>
+</main>
+
+<footer class="page-footer teal" th:insert="/fragments/footer"></footer>
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.js"></script>
+<script src="/js/init.js"></script>
 
 </body>
 </html>

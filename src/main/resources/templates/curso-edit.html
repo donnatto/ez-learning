@@ -1,86 +1,59 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:insert="/fragments/head">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Editar Curso | Ez Learning</title>
-
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
-<div class="container">
-    <h3 class="center">Editar Curso</h3>
-    <br>
-    <div class="row">
-        <div class="section col s12 l6 offset-l3">
-            <form action="#" method="post"
-                  th:object="${curso}"
-                  th:action="@{/cursos/update/{id_curso} (id_curso=${curso.id_curso})}"
-            >
+<header th:insert="/fragments/header"></header>
 
-                <div class="input-field">
-                    <label for="id_curso">Id de Curso</label>
-                    <input type="text" class="class-controller"
-                           id="id_curso" readonly
-                           th:field="*{id_curso}"
-                    >
-                </div>
+<main>
+    <div class="container">
+        <h3 class="center">Editar Curso</h3>
+        <br>
+        <div class="row">
+            <div class="section col s12 l6 offset-l3">
+                <form action="#" method="post"
+                      th:object="${curso}"
+                      th:action="@{/cursos/update/{id_curso} (id_curso=${curso.id_curso})}"
+                >
 
-                <div class="input-field">
-                    <label for="nom_curso">Nombre de Curso</label>
-                    <input type="text" class="class-controller"
-                           id="nom_curso"
-                           th:field="*{nom_curso}"
-                    >
-                </div>
+                    <div class="input-field">
+                        <label for="id_curso">Id de Curso</label>
+                        <input type="text" class="class-controller"
+                               id="id_curso" readonly
+                               th:field="*{id_curso}"
+                        >
+                    </div>
 
-                <div class="input-field">
-                    <label for="descripcion_curso">Descripción</label>
-                    <input type="text" class="class-controller"
-                           id="descripcion_curso"
-                           th:field="*{descripcion_curso}"
-                    >
-                </div>
+                    <div class="input-field">
+                        <label for="nom_curso">Nombre de Curso</label>
+                        <input type="text" class="class-controller"
+                               id="nom_curso"
+                               th:field="*{nom_curso}"
+                        >
+                    </div>
 
-                <button type="submit" class="btn">
-                    Confirmar
-                </button>
-                <a th:href="@{/cursos}" class="btn red lighten-1">Atras</a>
-            </form>
+                    <div class="input-field">
+                        <label for="descripcion_curso">Descripción</label>
+                        <input type="text" class="class-controller"
+                               id="descripcion_curso"
+                               th:field="*{descripcion_curso}"
+                        >
+                    </div>
+
+                    <button type="submit" class="btn">
+                        Confirmar
+                    </button>
+                    <a th:href="@{/cursos}" class="btn red lighten-1">Atras</a>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</main>
 <br><br>
 
-<footer class="page-footer teal">
-    <div class="container">
-        <div class="row">
-            <div class="col l8 s12">
-                <h5 class="white-text">Ez Learning</h5>
-                <p class="grey-text text-lighten-4">Somos un grupo de estudiantes que estamos desarrollando este
-                    proyecto como parte
-                    de nuestra formación profesional. Cualquier sugerencia será muy bien apreciada.</p>
+<footer class="page-footer teal" th:insert="/fragments/footer">
 
-
-            </div>
-            <div class="col l4 s12">
-                <h5 class="white-text">Github</h5>
-                <p class="grey-text text-lighten-4">Puedes encontrar a continuación el <a
-                        href="https://github.com/donnatto/ez-learning" target="_blank"
-                        class="purple-text text-darken-4"><strong>repositorio del proyecto.</strong>
-                </a></p>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            © 2019 Ez Learning
-        </div>
-    </div>
 </footer>
 
 <!--  Scripts-->

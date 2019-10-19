@@ -30,12 +30,9 @@ public class ProfesorController {
     }
 
     @PostMapping("/save")
-    public String saveProfesor(Profesor profesor,
-                               Model model) {
+    public String saveProfesor(Profesor profesor) {
         profesorService.create(profesor);
 
-        List<Profesor> profesores = profesorService.getAll();
-        model.addAttribute("profesores", profesores);
         return "redirect:/profesores";
     }
 
@@ -49,12 +46,9 @@ public class ProfesorController {
 
     @PostMapping("/update/{id_profesor}")
     public String updateProfesor(@PathVariable Long id_profesor,
-                                 Profesor profesor,
-                                 Model model){
+                                 Profesor profesor){
         profesorService.update(profesor);
 
-        List<Profesor> profesores = profesorService.getAll();
-        model.addAttribute("profesores", profesores);
         return "redirect:/profesores";
     }
 
@@ -67,15 +61,12 @@ public class ProfesorController {
     }
 
     @GetMapping("/delete/{id_profesor}")
-    public String deleteProfesor(@PathVariable Long id_profesor,
-                                 Model model) {
+    public String deleteProfesor(@PathVariable Long id_profesor) {
         Profesor profesorActual = profesorService.findById(id_profesor);
         if (profesorActual != null) {
             profesorService.delete(profesorActual);
         }
 
-        List<Profesor> profesores = profesorService.getAll();
-        model.addAttribute("profesores", profesores);
         return "redirect:/profesores";
     }
 }

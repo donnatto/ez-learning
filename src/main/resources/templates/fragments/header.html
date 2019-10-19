@@ -1,0 +1,30 @@
+<nav class="teal lighten-2" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="/" class="brand-logo white-text">Ez Learning</a>
+        <ul class="right hide-on-med-and-down">
+            <li><a th:href="@{/cursos}" class="white-text">Cursos</a></li>
+            <li><a th:href="@{/profesores}" class="white-text">Profesores</a></li>
+            <!--Dropdown-->
+            <li sec:authorize="isAnonymous()"><a class="dropdown-trigger" href="#" data-target="logindd">Ingresar
+            </a></li>
+            <li sec:authorize="isAuthenticated()"><a class="dropdown-trigger" href="#" data-target="accountdd"><i
+                    class="material-icons">account_circle</i></a></li>
+        </ul>
+        <ul id="nav-mobile" class="sidenav teal darken-2">
+            <li><a th:href="@{/cursos}" class="white-text">Cursos</a></li>
+            <li><a th:href="@{/profesores}" class="white-text">Profesores</a></li>
+            <li sec:authorize="isAnonymous()"><a th:href="@{/login}" class="white-text">Ingresar</a></li>
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}" class="white-text">Salir</a></li>
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger white-text"><i
+                class="material-icons">menu</i></a>
+    </div>
+</nav>
+
+<ul id="accountdd" class="dropdown-content">
+    <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Salir</a></li>
+</ul>
+<ul id="logindd" class="dropdown-content">
+    <li><a th:href="@{/login}">Iniciar Sesión</a></li>
+    <li><a href="#">Registrarse</a></li>
+</ul>

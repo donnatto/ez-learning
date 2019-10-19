@@ -1,36 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Docentes | Ez Learning</title>
-
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:insert="/fragments/head">
 </head>
 
 <body>
-<header>
-    <nav class="teal lighten-2" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" href="/" class="brand-logo white-text">Ez Learning</a>
-            <ul class="right hide-on-med-and-down">
-                <li><a th:href="@{/cursos}" class="white-text">Cursos</a></li>
-                <li><a th:href="@{/profesores}" class="white-text">Profesores</a></li>
-                <li><a href="#" class="white-text">Ingresar</a></li>
-            </ul>
-
-            <ul id="nav-mobile" class="sidenav teal darken-2">
-                <li><a th:href="@{/cursos}" class="white-text">Cursos</a></li>
-                <li><a th:href="@{/profesores}" class="white-text">Profesores</a></li>
-                <li><a href="#" class="white-text">Ingresar</a></li>
-            </ul>
-            <a href="#" data-target="nav-mobile" class="sidenav-trigger white-text"><i
-                    class="material-icons">menu</i></a>
-        </div>
-    </nav>
+<header th:insert="/fragments/header">
 </header>
 
 <main>
@@ -70,20 +44,20 @@
                         </thead>
                         <tbody>
                         <tr th:each="profesor : ${profesores}">
-                            <th scope="row" th:text="${profesor.getUsuario().id_usuario}"></th>
-                            <td th:text="${profesor.getUsuario().nom_usuario}"></td>
-                            <td th:text="${profesor.getUsuario().ape_usuario}"></td>
-                            <td th:text="${profesor.getUsuario().correo_usuario}"></td>
+                            <th scope="row" th:text="${profesor.usuario.id_usuario}"></th>
+                            <td th:text="${profesor.usuario.nom_usuario}"></td>
+                            <td th:text="${profesor.usuario.ape_usuario}"></td>
+                            <td th:text="${profesor.usuario.correo_usuario}"></td>
                             <td th:text="${profesor.descripcion_profesor}"></td>
 
                             <td>
                                 <div>
                                     <a th:href="@{/profesores/edit/{id_profesor}
-                                    (id_profesor=${profesor.getUsuario().id_usuario})}"
+                                    (id_profesor=${profesor.usuario.id_usuario})}"
                                        class="waves-effect waves-light btn-small">Editar
                                     </a>
                                     <a th:href="@{/profesores/delete/{id_profesor}
-                                (id_profesor=${profesor.getUsuario().id_usuario})}"
+                                (id_profesor=${profesor.usuario.id_usuario})}"
                                        class="waves-effect waves-light btn-small red lighten-1">Eliminar
                                     </a>
                                 </div>
@@ -98,29 +72,8 @@
 </main>
 <br><br>
 
-<footer class="page-footer teal">
-    <div class="container">
-        <div class="row">
-            <div class="col l8 s12">
-                <h5 class="white-text">Ez Learning</h5>
-                <p class="grey-text text-lighten-4">Somos un grupo de estudiantes que estamos desarrollando este
-                    proyecto como parte
-                    de nuestra formación profesional. Cualquier sugerencia será muy bien apreciada.</p>
-            </div>
-            <div class="col l4 s12">
-                <h5 class="white-text">Github</h5>
-                <p class="grey-text text-lighten-4">Puedes encontrar a continuación el <a
-                        href="https://github.com/donnatto/ez-learning" target="_blank"
-                        class="purple-text text-darken-4"><strong>repositorio del proyecto.</strong>
-                </a></p>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            © 2019 Ez Learning
-        </div>
-    </div>
+<footer class="page-footer teal" th:insert="/fragments/footer">
+
 </footer>
 
 <!--  Scripts-->
