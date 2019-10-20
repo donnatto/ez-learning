@@ -3,6 +3,7 @@ package com.ezlearning.platform.controller;
 import com.ezlearning.platform.model.Profesor;
 import com.ezlearning.platform.services.ProfesorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,12 +25,14 @@ public class ProfesorController {
     }
 
     @GetMapping("/add")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public String addProfesor(Model model) {
         model.addAttribute("profesor", new Profesor());
         return "profesor-add";
     }
 
     @PostMapping("/save")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public String saveProfesor(Profesor profesor) {
         profesorService.create(profesor);
 
@@ -37,6 +40,7 @@ public class ProfesorController {
     }
 
     @GetMapping("/edit/{id_profesor}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String getProfesorForUpdate(@PathVariable Long id_profesor,
                                        Model model) {
         Profesor profesorActual = profesorService.findById(id_profesor);
@@ -45,6 +49,7 @@ public class ProfesorController {
     }
 
     @PostMapping("/update/{id_profesor}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String updateProfesor(@PathVariable Long id_profesor,
                                  Profesor profesor){
         profesorService.update(profesor);
@@ -53,6 +58,7 @@ public class ProfesorController {
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('ROLE_USER')")
     public String getProfesoresList(Model model) {
 
         List<Profesor> profesores = profesorService.getAll();
@@ -61,6 +67,7 @@ public class ProfesorController {
     }
 
     @GetMapping("/delete/{id_profesor}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteProfesor(@PathVariable Long id_profesor) {
         Profesor profesorActual = profesorService.findById(id_profesor);
         if (profesorActual != null) {

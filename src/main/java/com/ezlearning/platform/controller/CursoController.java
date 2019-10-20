@@ -26,12 +26,14 @@ public class CursoController{
     }
 
     @GetMapping("/add")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public String addCurso(Model model) {
         model.addAttribute("curso", new Curso());
         return "curso-add";
     }
 
     @PostMapping("/save")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public String saveCurso(Curso curso, Model model) {
         cursoService.create(curso);
 
@@ -41,6 +43,7 @@ public class CursoController{
     }
 
     @GetMapping("/edit/{id_curso}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String getCursoForUpdate(@PathVariable Long id_curso, Model model) {
         Curso cursoActual = cursoService.findById(id_curso);
         model.addAttribute("curso", cursoActual);
@@ -48,6 +51,7 @@ public class CursoController{
     }
 
     @PostMapping("/update/{id_curso}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String updateCurso(@PathVariable Long id_curso, Curso curso, Model model) {
         cursoService.update(curso);
 
@@ -64,6 +68,7 @@ public class CursoController{
         return "cursos";
     }
     @GetMapping("/delete/{id_curso}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteCurso(@PathVariable Long id_curso, Model model) {
         Curso cursoActual = cursoService.findById(id_curso);
         if (cursoActual != null) {

@@ -45,7 +45,7 @@
                             <td th:text="${curso.nom_curso}"></td>
                             <td th:text="${curso.descripcion_curso}"></td>
 
-                            <td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')">
                                 <div>
                                     <a th:href="@{/cursos/edit/{id_curso}
                                     (id_curso=${curso.id_curso})}"

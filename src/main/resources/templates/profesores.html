@@ -50,7 +50,7 @@
                             <td th:text="${profesor.usuario.correo_usuario}"></td>
                             <td th:text="${profesor.descripcion_profesor}"></td>
 
-                            <td>
+                            <td sec:authorize="hasRole('ROLE_ADMIN')">
                                 <div>
                                     <a th:href="@{/profesores/edit/{id_profesor}
                                     (id_profesor=${profesor.usuario.id_usuario})}"
