@@ -1,6 +1,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:insert="fragments/head">
+    <title>Logout</title>
 </head>
 <body>
 <header th:insert="fragments/header"></header>
@@ -8,11 +9,9 @@
 <main>
     <div class="container main-content">
         <ul class="list-group">
-            <h3>Error</h3>
-            <li class="list-group-item list-group-item-danger"><h4 th:text="${error.message}">Status</h4></li>
-            <li th:if="${status}" class="list-group-item" th:text="'Status code: '+ ${status}"></li>
+            <li class="list-group-item list-group-item-info"><h3>Se ha registrado satisfactoriamente.</h3></li>
         </ul>
-        <p><a href="/" th:href="@{/}">Inicio</a></p>
+        <a th:href="@{/index}">Inicio</a>
     </div>
 </main>
 

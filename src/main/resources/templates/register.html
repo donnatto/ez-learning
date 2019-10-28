@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:insert="fragments/head">
+</head>
+<body>
+<header th:insert="fragments/header"></header>
+
+<main>
+    <div class="container">
+        <h3 class="center">Nuevo Usuario</h3>
+        <br>
+        <div class="row">
+            <div class="section col s12 l6 offset-l3">
+                <form method="post"
+                      th:object="${userdto}"
+                      th:action="@{/register}"
+                >
+                    <div th:if="${param.error}">
+                        <h5 class="center red-text text-lighten-1">${param.error}</h5>
+                    </div>
+                    <br>
+                    <div class="input-field">
+                        <label for="username">Usuario</label>
+                        <input type="text" class="class-controller"
+                               id="username" th:field="*{username}" required
+                        >
+                    </div>
+
+                    <div class="input-field">
+                        <label for="password">Contraseña</label>
+                        <input type="password" class="class-controller"
+                               id="password" th:field="*{password}" required
+                        >
+                    </div>
+
+                    <button type="submit" class="btn">
+                        Registrarse
+                    </button>
+                    <a th:href="@{/index}" class="btn red lighten-1">Atras</a>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<br><br>
+<footer class="page-footer teal" th:insert="fragments/footer">
+
+</footer>
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.js"></script>
+<script src="/js/init.js"></script>
+</body>
+</html>
