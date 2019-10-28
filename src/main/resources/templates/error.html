@@ -6,13 +6,16 @@
 <header th:insert="fragments/header"></header>
 
 <main>
-    <div class="container main-content">
-        <ul class="list-group">
-            <h3>Error</h3>
-            <li class="list-group-item list-group-item-danger"><h4 th:text="${error.message}">Status</h4></li>
-            <li th:if="${status}" class="list-group-item" th:text="'Status code: '+ ${status}"></li>
-        </ul>
-        <p><a href="/" th:href="@{/}">Inicio</a></p>
+    <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <h1 class="header center white-text">Error</h1>
+                <div class="row center">
+                    <h5 th:text="${error.message}" class="header col s12 light">Mensaje de error</h5>
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="/img/error.jpg" alt="Unsplash error img"></div>
     </div>
 </main>
 

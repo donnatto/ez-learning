@@ -7,11 +7,16 @@
 <header th:insert="fragments/header"></header>
 
 <main>
-    <div class="container main-content">
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-info"><h3>Te desconectaste sin problemas</h3></li>
-        </ul>
-        <a th:href="@{/index}">Inicio</a>
+    <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <div class="row">
+                    <h1 class="header col s12 center-align white-text">Nos vemos pronto</h1>
+                    <h5 class="header col s12 center-align light">Te desconectaste sin problemas</h5>
+                </div>
+            </div>
+        </div>
+        <div class="parallax"><img src="/img/exit2.jpg" alt="Unsplash exit img"></div>
     </div>
 </main>
 
