@@ -36,28 +36,28 @@
                         <thead>
                         <tr>
                             <th scope="col">id</th>
-                            <th scope="col">Apellido</th>
                             <th scope="col">Nombres</th>
+                            <th scope="col">Apellido</th>
                             <th scope="col">E-mail</th>
                             <th scope="col">Descripción</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="profesor : ${profesores}">
-                            <th scope="row" th:text="${profesor.usuario.id_usuario}"></th>
-                            <td th:text="${profesor.usuario.nom_usuario}"></td>
-                            <td th:text="${profesor.usuario.ape_usuario}"></td>
-                            <td th:text="${profesor.usuario.correo_usuario}"></td>
-                            <td th:text="${profesor.descripcion_profesor}"></td>
+                            <th scope="row" th:text="${profesor.id_profesor}"></th>
+                            <td th:text="${profesor.nomProfesor}"></td>
+                            <td th:text="${profesor.apeProfesor}"></td>
+                            <td th:text="${profesor.correoProfesor}"></td>
+                            <td th:text="${profesor.descProfesor}"></td>
 
                             <td sec:authorize="hasRole('ROLE_ADMIN')">
                                 <div>
                                     <a th:href="@{/profesores/edit/{id_profesor}
-                                    (id_profesor=${profesor.usuario.id_usuario})}"
+                                    (id_profesor=${profesor.id_profesor})}"
                                        class="waves-effect waves-light btn-small">Editar
                                     </a>
                                     <a th:href="@{/profesores/delete/{id_profesor}
-                                (id_profesor=${profesor.usuario.id_usuario})}"
+                                (id_profesor=${profesor.id_profesor})}"
                                        class="waves-effect waves-light btn-small red lighten-1">Eliminar
                                     </a>
                                 </div>

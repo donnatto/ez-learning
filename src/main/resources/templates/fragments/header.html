@@ -14,6 +14,7 @@
             <li><a th:href="@{/cursos}" class="white-text">Cursos</a></li>
             <li><a th:href="@{/profesores}" class="white-text">Profesores</a></li>
             <li sec:authorize="isAnonymous()"><a th:href="@{/login}" class="white-text">Ingresar</a></li>
+            <li sec:authorize="isAnonymous()"><a th:href="@{/register}" class="white-text">Registrarse</a></li>
             <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}" class="white-text">Salir</a></li>
         </ul>
         <a href="#" data-target="nav-mobile" class="sidenav-trigger white-text"><i

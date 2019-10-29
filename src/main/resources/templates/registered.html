@@ -7,12 +7,25 @@
 <header th:insert="fragments/header"></header>
 
 <main>
-    <div class="container main-content">
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-info"><h3>Se ha registrado satisfactoriamente.</h3></li>
-        </ul>
-        <a th:href="@{/index}">Inicio</a>
+
+    <div id="index-banner" class="parallax-container">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <br><br>
+                <h1 class="header center white-text">Bienvenido</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light">Se ha registrado satisfactoriamente.</h5>
+                </div>
+                <br>
+                <div class="row center">
+                    <a th:href="@{/login}" class="waves-effect waves-light btn-large">Iniciar Sesión</a>
+                </div>
+                <br><br>
+            </div>
+        </div>
+        <div class="parallax"><img src="/img/welcome.jpg" alt="Unsplash welcome img"></div>
     </div>
+
 </main>
 
 <footer class="page-footer teal" th:insert="fragments/footer"></footer>

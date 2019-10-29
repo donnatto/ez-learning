@@ -13,14 +13,14 @@
             <div class="section col s12 l6 offset-l3">
                 <form action="#" method="post"
                       th:object="${profesor}"
-                      th:action="@{/profesores/update/{id_profesor} (id_profesor=${profesor.usuario.id_usuario})}"
+                      th:action="@{/profesores/update/{id_profesor} (id_profesor=${profesor.id_profesor})}"
                 >
 
                     <div class="input-field">
                         <label for="id_profesor">Id de Profesor</label>
                         <input type="text" class="class-controller"
                                id="id_profesor" readonly
-                               th:field="*{usuario.id_usuario}"
+                               th:field="*{id_profesor}"
                         >
                     </div>
 
@@ -28,7 +28,7 @@
                         <label for="nom_profesor">Nombre</label>
                         <input type="text" class="class-controller"
                                id="nom_profesor"
-                               th:field="*{usuario.nom_usuario}"
+                               th:field="*{nomProfesor}" autofocus
                         >
                     </div>
 
@@ -36,7 +36,7 @@
                         <label for="ape_profesor">Apellido</label>
                         <input type="text" class="class-controller"
                                id="ape_profesor"
-                               th:field="*{usuario.ape_usuario}"
+                               th:field="*{apeProfesor}"
                         >
                     </div>
 
@@ -44,7 +44,7 @@
                         <label for="correo_profesor">Correo Electrónico</label>
                         <input type="text" class="class-controller"
                                id="correo_profesor"
-                               th:field="*{usuario.correo_usuario}"
+                               th:field="*{correoProfesor}"
                         >
                     </div>
 
@@ -52,7 +52,7 @@
                         <label for="descripcion_profesor">Descripción</label>
                         <input type="text" class="class-controller"
                                id="descripcion_profesor"
-                               th:field="*{descripcion_profesor}"
+                               th:field="*{descProfesor}"
                         >
                     </div>
 

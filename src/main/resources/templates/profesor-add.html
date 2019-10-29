@@ -17,18 +17,10 @@
                 >
 
                     <div class="input-field">
-                        <label for="id_profesor">Id</label>
-                        <input type="text" class="class-controller"
-                               id="id_profesor"
-                               th:field="*{usuario.id_usuario}"
-                        >
-                    </div>
-
-                    <div class="input-field">
                         <label for="nom_profesor">Nombre</label>
                         <input type="text" class="class-controller"
                                id="nom_profesor"
-                               th:field="*{usuario.nom_usuario}"
+                               th:field="*{nombre}" autofocus
                         >
                     </div>
 
@@ -36,7 +28,7 @@
                         <label for="ape_profesor">Apellido</label>
                         <input type="text" class="class-controller"
                                id="ape_profesor"
-                               th:field="*{usuario.ape_usuario}"
+                               th:field="*{apellido}"
                         >
                     </div>
 
@@ -44,15 +36,7 @@
                         <label for="correo_profesor">Correo Electrónico</label>
                         <input type="text" class="class-controller"
                                id="correo_profesor"
-                               th:field="*{usuario.correo_usuario}"
-                        >
-                    </div>
-
-                    <div class="input-field">
-                        <label for="clave_profesor">Clave</label>
-                        <input type="password" class="class-controller"
-                               id="clave_profesor"
-                               th:field="*{usuario.clave_usuario}"
+                               th:field="*{correo}"
                         >
                     </div>
 
@@ -60,7 +44,7 @@
                         <label for="descripcion_profesor">Descripción</label>
                         <input type="text" class="class-controller"
                                id="descripcion_profesor"
-                               th:field="*{descripcion_profesor}"
+                               th:field="*{descripcion}"
                         >
                     </div>
 
