@@ -42,8 +42,8 @@
                         <tbody>
                         <tr th:each="curso : ${cursos}">
                             <th scope="row" th:text="${curso.id_curso}"></th>
-                            <td th:text="${curso.nom_curso}"></td>
-                            <td th:text="${curso.descripcion_curso}"></td>
+                            <td th:text="${curso.nomCurso}"></td>
+                            <td th:text="${curso.descripcionCurso}"></td>
 
                             <td sec:authorize="hasRole('ROLE_ADMIN')">
                                 <div>

@@ -1,48 +1,49 @@
 package com.ezlearning.platform.services;
 
+import com.ezlearning.platform.dto.CursoDto;
 import com.ezlearning.platform.model.Curso;
-import com.ezlearning.platform.model.Profesor;
+import com.ezlearning.platform.repositories.CursoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class CursoService implements GenericService<Curso, Long>{
+public class CursoService{
 
-    List<Curso> cursos = new ArrayList<>(
-            Arrays.asList(new Curso(1L, "Essential Java", "Curso de Java para beginners", new Profesor()),
-                    new Curso(2L, "UX Principles", "Curso de Experiencia de Usuario", new Profesor()))
-    );
+    private CursoRepository cursoRepository;
 
-    @Override
-    public void create(Curso curso) {
-        cursos.add(curso);
+    @Autowired
+    public CursoService(CursoRepository cursoRepository) {
+        this.cursoRepository = cursoRepository;
     }
 
-    @Override
-    public void update(Curso curso) {
-        Curso currentCurso = findById(curso.getId_curso());
-        if (currentCurso != null) {
-            int index = cursos.indexOf(currentCurso);
-            curso.setId_curso(currentCurso.getId_curso());
-            cursos.set(index, curso);
+    public void create(CursoDto cursoDto) throws Exception{
+        if (null != cursoRepository.findByNomCurso(cursoDto.getNomCurso())) {
+            throw new Exception("Ya existe un curso con el nombre " + cursoDto.getNomCurso());
         }
+        String nomCurso = cursoDto.getNomCurso();
+        String descCurso = cursoDto.getDescCurso();
+        Curso curso = new Curso(nomCurso, descCurso);
+
+        cursoRepository.save(curso);
     }
 
-    @Override
-    public void delete(Curso curso) { cursos.remove(curso); }
+    public void update(Curso curso) {
+        Curso currentCurso = cursoRepository.findById(curso.getId_curso()).get();
 
-    @Override
+            currentCurso.setNomCurso(curso.getNomCurso());
+            currentCurso.setDescripcionCurso(curso.getDescripcionCurso());
+
+            cursoRepository.save(currentCurso);
+
+    }
+
+    public void delete(Curso curso) { cursoRepository.delete(curso); }
+
+
     public List<Curso> getAll() {
-        return cursos;
+        return cursoRepository.findAll();
     }
 
-    @Override
-    public Curso findById(Long id_curso) {
-        Curso curso = cursos.stream()
-                .filter(p -> p.getId_curso() == id_curso).findFirst().orElse(null);
-        return curso;
-    }
 }

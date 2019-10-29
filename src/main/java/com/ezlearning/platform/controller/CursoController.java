@@ -1,6 +1,8 @@
 package com.ezlearning.platform.controller;
 
+import com.ezlearning.platform.dto.CursoDto;
 import com.ezlearning.platform.model.Curso;
+import com.ezlearning.platform.repositories.CursoRepository;
 import com.ezlearning.platform.services.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,45 +20,49 @@ import java.util.List;
 public class CursoController{
 
     private CursoService cursoService;
+    private CursoRepository cursoRepository;
 
     @Autowired
-    public CursoController(CursoService cursoService) {
+    public CursoController(CursoService cursoService, CursoRepository cursoRepository) {
         super();
         this.cursoService = cursoService;
+        this.cursoRepository = cursoRepository;
     }
 
     @GetMapping("/add")
     @PreAuthorize("hasRole('ROLE_USER')")
     public String addCurso(Model model) {
-        model.addAttribute("curso", new Curso());
+        model.addAttribute("curso", new CursoDto());
         return "curso-add";
     }
 
     @PostMapping("/save")
     @PreAuthorize("hasRole('ROLE_USER')")
-    public String saveCurso(Curso curso, Model model) {
-        cursoService.create(curso);
+    public String saveCurso(CursoDto curso, Model model) {
+        try {
+            cursoService.create(curso);
+            return "redirect:/cursos";
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("error", e);
+            return "error";
+        }
 
-        List<Curso> cursos = cursoService.getAll();
-        model.addAttribute("cursos", cursos);
-        return "redirect:/cursos";
     }
 
     @GetMapping("/edit/{id_curso}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String getCursoForUpdate(@PathVariable Long id_curso, Model model) {
-        Curso cursoActual = cursoService.findById(id_curso);
+        Curso cursoActual = cursoRepository.findById(id_curso).get();
         model.addAttribute("curso", cursoActual);
         return "curso-edit";
     }
 
     @PostMapping("/update/{id_curso}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String updateCurso(@PathVariable Long id_curso, Curso curso, Model model) {
+    public String updateCurso(@PathVariable Long id_curso, Curso curso) {
         cursoService.update(curso);
 
-        List<Curso> cursos = cursoService.getAll();
-        model.addAttribute("cursos", cursos);
         return "redirect:/cursos";
     }
 
@@ -69,14 +75,10 @@ public class CursoController{
     }
     @GetMapping("/delete/{id_curso}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String deleteCurso(@PathVariable Long id_curso, Model model) {
-        Curso cursoActual = cursoService.findById(id_curso);
-        if (cursoActual != null) {
-            cursoService.delete(cursoActual);
-        }
+    public String deleteCurso(@PathVariable Long id_curso) {
+        Curso cursoActual = cursoRepository.findById(id_curso).get();
+        cursoService.delete(cursoActual);
 
-        List<Curso> cursos = cursoService.getAll();
-        model.addAttribute("cursos", cursos);
         return "redirect:/cursos";
     }
 }
