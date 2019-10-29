@@ -46,8 +46,9 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests()
-                .antMatchers("/", "/index", "/discover", "/api/**","/register", "/css/**", "/js/**", "/img/**").permitAll()
+        http.csrf().disable().headers().frameOptions().disable().and().authorizeRequests()
+                .antMatchers("/", "/index", "/discover", "/h2-console/**", "/api/**","/register", "/css/**", "/js/**",
+                        "/img/**").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login").permitAll()
