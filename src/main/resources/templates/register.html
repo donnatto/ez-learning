@@ -34,6 +34,25 @@
                         >
                     </div>
 
+                    <div class="input-field">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="class-controller"
+                               id="nombre" th:field="*{nombre}" required
+                        >
+                    </div>
+
+                    <div class="input-field">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" class="class-controller"
+                               id="apellido" th:field="*{apellido}" required
+                        >
+                    </div><div class="input-field">
+                        <label for="email">Email</label>
+                        <input type="text" class="class-controller"
+                               id="email" th:field="*{email}" required
+                        >
+                    </div>
+
                     <button type="submit" class="btn">
                         Registrarse
                     </button>

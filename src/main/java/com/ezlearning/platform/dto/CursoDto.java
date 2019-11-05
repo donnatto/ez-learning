@@ -1,5 +1,6 @@
 package com.ezlearning.platform.dto;
 
+import com.ezlearning.platform.model.Profesor;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,4 +11,5 @@ import lombok.NoArgsConstructor;
 public class CursoDto {
     private String nomCurso;
     private String descCurso;
+    private Profesor profesor;
 }

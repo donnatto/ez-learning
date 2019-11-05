@@ -1,7 +1,9 @@
 package com.ezlearning.platform.services;
 
 import com.ezlearning.platform.dto.CursoDto;
+import com.ezlearning.platform.dto.ProfesotDto;
 import com.ezlearning.platform.model.Curso;
+import com.ezlearning.platform.model.Profesor;
 import com.ezlearning.platform.repositories.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,8 @@ public class CursoService{
         }
         String nomCurso = cursoDto.getNomCurso();
         String descCurso = cursoDto.getDescCurso();
-        Curso curso = new Curso(nomCurso, descCurso);
+        Profesor profesor = cursoDto.getProfesor();
+        Curso curso = new Curso(nomCurso, descCurso, profesor);
 
         cursoRepository.save(curso);
     }
@@ -34,6 +37,7 @@ public class CursoService{
 
             currentCurso.setNomCurso(curso.getNomCurso());
             currentCurso.setDescripcionCurso(curso.getDescripcionCurso());
+            currentCurso.setProfesor(curso.getProfesor());
 
             cursoRepository.save(currentCurso);
 
