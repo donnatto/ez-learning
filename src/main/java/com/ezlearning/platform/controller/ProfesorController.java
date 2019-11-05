@@ -71,10 +71,16 @@ public class ProfesorController {
 
     @GetMapping("/delete/{id_profesor}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String deleteProfesor(@PathVariable Long id_profesor) {
-        Profesor profesorActual = profesorRepository.findById(id_profesor).get();
+    public String deleteProfesor(@PathVariable Long id_profesor, Model model) {
+        try {
+            Profesor profesorActual = profesorRepository.findById(id_profesor).get();
             profesorService.delete(profesorActual);
 
-        return "redirect:/profesores";
+            return "redirect:/profesores";
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("error", e);
+            return "error";
+        }
     }
 }

@@ -37,6 +37,7 @@
                             <th scope="col">id</th>
                             <th scope="col">Curso</th>
                             <th scope="col">Descripción</th>
+                            <th scope="col">Profesor</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -44,6 +45,7 @@
                             <th scope="row" th:text="${curso.id_curso}"></th>
                             <td th:text="${curso.nomCurso}"></td>
                             <td th:text="${curso.descripcionCurso}"></td>
+                            <td th:text="${curso.profesor.nomProfesor} + ' ' + ${curso.profesor.apeProfesor}"></td>
 
                             <td sec:authorize="hasRole('ROLE_ADMIN')">
                                 <div>
