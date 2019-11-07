@@ -1,74 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:insert="fragments/head">
-</head>
 
+</head>
 <body>
 <header th:insert="fragments/header">
 </header>
 
 <main>
-    <div id="index-banner" class="parallax-container">
+    <div id="discover-banner" class="parallax-container">
         <div class="section no-pad-bot">
             <div class="container">
                 <br><br>
                 <h1 class="header center white-text">Cursos</h1>
                 <div class="row center">
-                    <h5 class="header col s12 light">Mira los cursos que tenemos para ti</h5>
-                </div>
-                <br>
-                <div class="row center">
-                    <a th:href="@{/cursos/add}" class="waves-effect waves-light btn-large">Añade un Curso</a>
+                    <h5 class="header col s12 light">Explora los cursos que tenemos y matricúlate. </h5>
                 </div>
                 <br><br>
             </div>
         </div>
-        <div class="parallax"><img src="/img/cursos.jpg" alt="Unsplash courses background"></div>
+        <div class="parallax"><img src="/img/cursos.jpg" alt="Unsplash cursos background"></div>
     </div>
-    <div class="section">
-        <div th:switch="cursos" class="container">
-            <div th:case="*" class="row">
-                <div class="col s12 center">
-                    <h4>Listado de Cursos</h4>
-                    <br>
-                    <table class="highlight responsive-table">
-                        <thead>
-                        <tr>
-                            <th scope="col">id</th>
-                            <th scope="col">Curso</th>
-                            <th scope="col">Descripción</th>
-                            <th scope="col">Profesor</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="curso : ${cursos}">
-                            <th scope="row" th:text="${curso.id_curso}"></th>
-                            <td th:text="${curso.nomCurso}"></td>
-                            <td th:text="${curso.descripcionCurso}"></td>
-                            <td th:text="${curso.profesor.nomProfesor} + ' ' + ${curso.profesor.apeProfesor}"></td>
-
-                            <td sec:authorize="hasRole('ROLE_ADMIN')">
-                                <div>
-                                    <a th:href="@{/cursos/edit/{id_curso}
-                                    (id_curso=${curso.id_curso})}"
-                                       class="waves-effect waves-light btn-small">Editar
-                                    </a>
-                                    <a th:href="@{/cursos/delete/{id_curso}
-                                (id_curso=${curso.id_curso})}"
-                                       class="waves-effect waves-light btn-small red lighten-1">Eliminar
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 cards-container">
+                <div class="card" th:each="curso:${cursos}">
+                    <div class="card-image">
+                        <img th:src="|/img/courses/${curso.id_curso}.jpg|">
+                        <a th:href="|/cursos/${curso.id_curso}|"
+                           class="btn-floating btn-large halfway-fab waves-effect waves-light red"><i
+                                class="material-icons">exit_to_app</i></a>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title teal-text" th:text="${curso.nomCurso}">Titulo</span>
+                        <p th:text="${curso.descripcionCurso}">Descripcion</p>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 </main>
 <br><br>
-
 <footer class="page-footer teal" th:insert="fragments/footer">
 
 </footer>

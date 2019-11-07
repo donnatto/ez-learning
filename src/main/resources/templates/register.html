@@ -21,23 +21,9 @@
                     </div>
                     <br>
                     <div class="input-field">
-                        <label for="username">Usuario</label>
-                        <input type="text" class="class-controller"
-                               id="username" th:field="*{username}" required autofocus
-                        >
-                    </div>
-
-                    <div class="input-field">
-                        <label for="password">Contraseña</label>
-                        <input type="password" class="class-controller"
-                               id="password" th:field="*{password}" required
-                        >
-                    </div>
-
-                    <div class="input-field">
                         <label for="nombre">Nombre</label>
                         <input type="text" class="class-controller"
-                               id="nombre" th:field="*{nombre}" required
+                               id="nombre" th:field="*{nombre}" required autofocus
                         >
                     </div>
 
@@ -46,18 +32,32 @@
                         <input type="text" class="class-controller"
                                id="apellido" th:field="*{apellido}" required
                         >
-                    </div><div class="input-field">
+                    </div>
+
+                    <div class="input-field">
                         <label for="email">Email</label>
                         <input type="text" class="class-controller"
                                id="email" th:field="*{email}" required
                         >
                     </div>
 
-                    <button type="submit" class="btn">
+                    <div class="input-field">
+                        <label for="username">Usuario</label>
+                        <input type="text" class="class-controller"
+                               id="username" th:field="*{username}" required
+                        >
+                    </div>
+
+                    <div class="input-field mb-5">
+                        <label for="password">Contraseña</label>
+                        <input type="password" class="class-controller"
+                               id="password" th:field="*{password}" required
+                        >
+                    </div>
+
+                    <button type="submit" class="btn right">
                         Registrarse
                     </button>
-                    <a th:href="@{/index}" class="btn red lighten-1">Atras</a>
-
                 </form>
             </div>
         </div>
