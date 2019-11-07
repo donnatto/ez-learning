@@ -8,18 +8,15 @@ INSERT INTO auth_user_group (username, auth_group) VALUES('edominguez', 'USER');
 INSERT INTO auth_user_group (username, auth_group) VALUES('edominguez', 'ADMIN');
 INSERT INTO auth_user_group (username, auth_group) VALUES('demo', 'USER');
 -- INSERTAR PROFESORES
-INSERT INTO profesor (nombre, apellido, correo, descripcion)
-    VALUES ( 'Esteban', 'Fernandez', 'efernandez@gmail.com', 'Profesor de Java');
-INSERT INTO profesor (nombre, apellido, correo, descripcion)
-    VALUES ( 'Juana', 'Magdalena', 'jmagdalena@hotmail.com', 'Profesora de UX');
-INSERT INTO profesor (nombre, apellido, correo, descripcion)
-    VALUES ( 'Pedro', 'Navaja', 'pnavaja@outlook.com', 'Profesor de Python');
-INSERT INTO profesor (nombre, apellido, correo, descripcion)
-    VALUES ( 'Maria', 'Mercedes', 'Mmercedes@yahoo.com', 'Profesora de algoritmos'),
-           ('Alberto', 'Ibarra', 'aibarra@hotmail.com', 'Profesor de HTML'),
-           ('Jose', 'Domingo', 'jdomingo@hotmail.com', 'Profesor de Linux'),
-           ('Stefany', 'Carranza', 'scarranza@gmail.com', 'Profesora de Javascript'),
-           ('Ismael', 'Lopez', 'slopez@outlook.com', 'Profesor de Base de Datos');
+INSERT INTO profesor (nombre, apellido, correo, descripcion) VALUES
+( 'Esteban', 'Fernandez', 'efernandez@gmail.com', 'Profesor de Java'),
+( 'Juana', 'Magdalena', 'jmagdalena@hotmail.com', 'Profesora de UX'),
+( 'Pedro', 'Navaja', 'pnavaja@outlook.com', 'Profesor de Python'),
+( 'Maria', 'Mercedes', 'Mmercedes@yahoo.com', 'Profesora de algoritmos'),
+('Alberto', 'Ibarra', 'aibarra@hotmail.com', 'Profesor de HTML'),
+('Jose', 'Domingo', 'jdomingo@hotmail.com', 'Profesor de Linux'),
+('Stefany', 'Carranza', 'scarranza@gmail.com', 'Profesora de Javascript'),
+('Ismael', 'Lopez', 'slopez@outlook.com', 'Profesor de Base de Datos');
 -- INSERTAR CURSOS
 INSERT INTO curso (nombre, descripcion, profesor_id, detalle, dificultad) VALUES
 ( 'Essential Java', 'Curso de Java para beginners', 1, 'Si lo que buscas es aprender a programar en Java con este ' ||

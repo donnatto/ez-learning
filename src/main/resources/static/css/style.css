@@ -13,7 +13,10 @@ p {
 }
 
 #detail-card-title {
-  font-weight: 500!important;
+  font-weight: 500;
+}
+#curso-card-title {
+  font-weight: 400;
 }
 
 /* Helpers */
@@ -79,6 +82,12 @@ p {
 
 footer.page-footer {
   margin: 0;
+}
+
+/* Collapsible */
+li.active .collapsible-header {
+  font-weight: 500;
+  color: #26a69a;
 }
 
 /* Cards container */

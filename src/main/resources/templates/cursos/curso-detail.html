@@ -9,13 +9,13 @@
 
 <main>
     <div class="container">
-        <div class="row">
+        <div class="row mt-3">
             <!-- Sidebar -->
             <div class="col s12 m4 l3">
                 <ul class="collapsible">
                     <li class="active">
-                        <div class="collapsible-header teal-text"><i class="material-icons">book
-                        </i><strong th:text="${curso.nomCurso}">Nombre del Curso</strong></div>
+                        <div class="collapsible-header"><i class="material-icons">book
+                        </i><span th:text="${curso.nomCurso}">Nombre del Curso</span></div>
                         <div class="collapsible-body"><span th:text="${curso.descripcionCurso}">Descripcion del curso</span></div>
                     </li>
                     <li>
@@ -32,10 +32,19 @@
                     </li>
                     <li>
                         <div class="collapsible-header"><i class="material-icons">assignment_ind</i>Profesor</div>
-                        <div class="collapsible-body"><span
-                                th:text="${curso.profesor.nomProfesor} + ' ' + ${curso.profesor.apeProfesor}">Datos
-                            del
-                            Profesor</span></div>
+                        <div class="collapsible-body">
+                            <a href="#">
+                                <div class="row">
+                                <img th:src="|/img/instructors/${curso.profesor.id_profesor}.jpg|"
+                                     class="col s4 m12 circle responsive-img"
+                                     alt="instructor image"/>
+                                <div class="col s8 m12 teal-text mt-3 center-align">
+                                <strong
+                                    th:text="${curso.profesor.nomProfesor} + ' ' + ${curso.profesor.apeProfesor}">Datos del Profesor</strong>
+                                </div>
+                                </div>
+                            </a>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -43,7 +52,7 @@
             <div class="col s12 m8 l9">
                 <div class="card">
                     <div class="card-image">
-                        <img th:src="|/img/courses/${curso.id_curso}.jpg|">
+                        <img th:src="|/img/courses/${curso.id_curso}.jpg|" alt="course image">
                         <span id="detail-card-title" class="card-title" th:text="${curso.nomCurso}">Nombre del
                             Curso</span>
                     </div>
@@ -57,9 +66,6 @@
             </div>
         </div>
     </div>
-
-    <br><br>
-
 </main>
 <br><br>
 <footer class="page-footer teal" th:insert="fragments/footer">
