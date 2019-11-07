@@ -33,7 +33,7 @@ public class CursoController{
     @PreAuthorize("hasRole('ROLE_USER')")
     public String addCurso(Model model) {
         model.addAttribute("curso", new CursoDto());
-        return "curso-add";
+        return "cursos/curso-add";
     }
 
     @PostMapping("/save")
@@ -55,7 +55,7 @@ public class CursoController{
     public String getCursoForUpdate(@PathVariable Long id_curso, Model model) {
         Curso cursoActual = cursoRepository.findById(id_curso).get();
         model.addAttribute("curso", cursoActual);
-        return "curso-edit";
+        return "cursos/curso-edit";
     }
 
     @PostMapping("/update/{id_curso}")
@@ -67,11 +67,10 @@ public class CursoController{
     }
 
     @GetMapping
-    @PreAuthorize("hasRole('ROLE_USER')")
     public String getCursosList(Model model) {
         List<Curso> cursos = cursoService.getAll();
         model.addAttribute("cursos", cursos);
-        return "cursos";
+        return "cursos/cursos";
     }
     @GetMapping("/delete/{id_curso}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -80,5 +79,19 @@ public class CursoController{
         cursoService.delete(cursoActual);
 
         return "redirect:/cursos";
+    }
+
+    @GetMapping("/{id_curso}")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public String getCursoDetail(@PathVariable Long id_curso, Model model) {
+        try {
+            Curso curso = cursoRepository.findById(id_curso).get();
+            model.addAttribute("curso", curso);
+            return "cursos/curso-detail";
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("error", e);
+            return "error";
+        }
     }
 }

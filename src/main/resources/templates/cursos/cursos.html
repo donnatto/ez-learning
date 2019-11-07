@@ -25,7 +25,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12 cards-container">
-                <div class="card" th:each="curso:${cursos}">
+                <div class="card hoverable" th:each="curso:${cursos}">
                     <div class="card-image">
                         <img th:src="|/img/courses/${curso.id_curso}.jpg|">
                         <a th:href="|/cursos/${curso.id_curso}|"

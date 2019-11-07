@@ -27,6 +27,8 @@ CREATE TABLE curso (
   curso_id BIGINT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(128) NOT NULL UNIQUE,
   descripcion VARCHAR(256) NOT NULL,
+  detalle VARCHAR(1024),
+  dificultad VARCHAR(128) NOT NULL,
   profesor_id BIGINT NOT NULL,
   CONSTRAINT curso_fk FOREIGN KEY(profesor_id) REFERENCES profesor(profesor_id),
 );

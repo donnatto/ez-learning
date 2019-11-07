@@ -12,8 +12,8 @@ p {
   line-height: 2rem;
 }
 
-.card-title {
-  font-weight: bolder;
+#detail-card-title {
+  font-weight: 500!important;
 }
 
 /* Helpers */
@@ -62,12 +62,13 @@ p {
     top: 10%;
   }
 }
-
-@media only screen and (max-width : 600px) {
-  #index-banner .section {
-    top: 0;
-  }
+#curso-detail-banner {
+  margin-top: 0.5rem;
+  min-height: 250px;
 }
+  .parallax-container .section {
+    width: 100%;
+  }
 
 .icon-block {
   padding: 0 15px;

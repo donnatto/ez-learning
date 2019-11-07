@@ -27,6 +27,12 @@ public class Curso {
     @Column(name = "descripcion")
     private String descripcionCurso;
 
+    @Column(name = "detalle")
+    private String detalleCurso;
+
+    @Column(name = "dificultad")
+    private String dificultarCurso;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "profesor_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)

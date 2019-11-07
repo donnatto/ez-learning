@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:insert="fragments/head">
+
+</head>
+<body>
+<header th:insert="fragments/header">
+</header>
+
+<main>
+    <div class="container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col s12 m4 l3">
+                <ul class="collapsible">
+                    <li class="active">
+                        <div class="collapsible-header teal-text"><i class="material-icons">book
+                        </i><strong th:text="${curso.nomCurso}">Nombre del Curso</strong></div>
+                        <div class="collapsible-body"><span th:text="${curso.descripcionCurso}">Descripcion del curso</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">local_atm</i>Precio</div>
+                        <div class="collapsible-body"><span>Gratis</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">school
+                        </i>Dificultad
+                        </div>
+                        <div
+                                class="collapsible-body"><span th:text="${curso.dificultarCurso}">Dificultad
+                            del curso</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">assignment_ind</i>Profesor</div>
+                        <div class="collapsible-body"><span
+                                th:text="${curso.profesor.nomProfesor} + ' ' + ${curso.profesor.apeProfesor}">Datos
+                            del
+                            Profesor</span></div>
+                    </li>
+                </ul>
+            </div>
+            <!-- Course Details -->
+            <div class="col s12 m8 l9">
+                <div class="card">
+                    <div class="card-image">
+                        <img th:src="|/img/courses/${curso.id_curso}.jpg|">
+                        <span id="detail-card-title" class="card-title" th:text="${curso.nomCurso}">Nombre del
+                            Curso</span>
+                    </div>
+                    <div class="card-content" th:text="${curso.detalleCurso}">
+                        <p>Detalle del Curso</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" class="teal-text darken-1"><strong>Matricularse</strong></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br>
+
+</main>
+<br><br>
+<footer class="page-footer teal" th:insert="fragments/footer">
+
+</footer>
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.js"></script>
+<script src="/js/init.js"></script>
+
+</body>
+</html>
