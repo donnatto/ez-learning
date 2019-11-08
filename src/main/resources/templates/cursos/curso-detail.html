@@ -60,8 +60,28 @@
                         <p>Detalle del Curso</p>
                     </div>
                     <div class="card-action">
-                        <a href="#" class="teal-text darken-1"><strong>Matricularse</strong></a>
+                        <!-- Modal Trigger -->
+                        <a href="#modal-matricula"
+                           class="teal-text darken-1 modal-trigger"><strong>Matricularse</strong></a>
+
                     </div>
+                </div>
+            </div>
+            <!-- Modal Sctructure -->
+            <div id="modal-matricula" class="modal">
+                <div class="modal-content">
+                    <h4 class="teal-text">Matrícula</h4>
+                    <p>Estás a un paso de comenzar un nuevo viaje rumbo a la excelencia. ¿Deseas matricularte en el
+                        curso de <strong
+                            th:text="${curso.nomCurso}">nombre de
+                        curso</strong>,
+                    dictado por <strong
+                                th:text="${curso.profesor.nomProfesor} + ' ' + ${curso.profesor.apeProfesor}">profesor
+                        </strong>?</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancelar</a>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Confirmar</a>
                 </div>
             </div>
         </div>
