@@ -12,7 +12,7 @@ INSERT INTO profesor (nombre, apellido, correo, descripcion) VALUES
 ( 'Esteban', 'Fernandez', 'efernandez@gmail.com', 'Profesor de Java'),
 ( 'Juana', 'Magdalena', 'jmagdalena@hotmail.com', 'Profesora de UX'),
 ( 'Pedro', 'Navaja', 'pnavaja@outlook.com', 'Profesor de Python'),
-( 'Maria', 'Mercedes', 'Mmercedes@yahoo.com', 'Profesora de algoritmos'),
+( 'Maria', 'Mercedes', 'mmercedes@yahoo.com', 'Profesora de algoritmos'),
 ('Alberto', 'Ibarra', 'aibarra@hotmail.com', 'Profesor de HTML'),
 ('Jose', 'Domingo', 'jdomingo@hotmail.com', 'Profesor de Linux'),
 ('Stefany', 'Carranza', 'scarranza@gmail.com', 'Profesora de Javascript'),

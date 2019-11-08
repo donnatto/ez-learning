@@ -12,7 +12,7 @@
         <div class="row mt-3">
             <!-- Sidebar -->
             <div class="col s12 m4 l3">
-                <ul class="collapsible">
+                <ul class="collapsible z-depth-3">
                     <li class="active">
                         <div class="collapsible-header"><i class="material-icons">book
                         </i><span th:text="${curso.nomCurso}">Nombre del Curso</span></div>
@@ -33,7 +33,7 @@
                     <li>
                         <div class="collapsible-header"><i class="material-icons">assignment_ind</i>Profesor</div>
                         <div class="collapsible-body">
-                            <a href="#">
+                            <a th:href="@{/profesores/{id_profesor}(id_profesor=${curso.profesor.id_profesor})}">
                                 <div class="row">
                                 <img th:src="|/img/instructors/${curso.profesor.id_profesor}.jpg|"
                                      class="col s4 m12 circle responsive-img"
@@ -50,7 +50,7 @@
             </div>
             <!-- Course Details -->
             <div class="col s12 m8 l9">
-                <div class="card">
+                <div class="card z-depth-3">
                     <div class="card-image">
                         <img th:src="|/img/courses/${curso.id_curso}.jpg|" alt="course image">
                         <span id="detail-card-title" class="card-title" th:text="${curso.nomCurso}">Nombre del
@@ -80,8 +80,8 @@
                         </strong>?</p>
                 </div>
                 <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancelar</a>
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Confirmar</a>
+                    <a href="#!" class="modal-close waves-effect waves-red btn-flat red-text">Cancelar</a>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat teal-text">Confirmar</a>
                 </div>
             </div>
         </div>

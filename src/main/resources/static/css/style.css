@@ -138,3 +138,8 @@ li.active .collapsible-header {
     column-count: 3;
   }
 }
+
+/* Footer */
+.footer-copyright a i:hover {
+  color: #ffca28!important;
+}

@@ -1,7 +1,9 @@
 package com.ezlearning.platform.controller;
 
 import com.ezlearning.platform.dto.ProfesotDto;
+import com.ezlearning.platform.model.Curso;
 import com.ezlearning.platform.model.Profesor;
+import com.ezlearning.platform.repositories.CursoRepository;
 import com.ezlearning.platform.repositories.ProfesorRepository;
 import com.ezlearning.platform.services.ProfesorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,18 +23,21 @@ public class ProfesorController {
 
     private ProfesorService profesorService;
     private ProfesorRepository profesorRepository;
+    private CursoRepository cursoRepository;
 
     @Autowired
-    public ProfesorController(ProfesorService profesorService, ProfesorRepository profesorRepository) {
+    public ProfesorController(ProfesorService profesorService, ProfesorRepository profesorRepository,
+                              CursoRepository cursoRepository) {
         this.profesorService = profesorService;
         this.profesorRepository = profesorRepository;
+        this.cursoRepository = cursoRepository;
     }
 
     @GetMapping("/add")
     @PreAuthorize("hasRole('ROLE_USER')")
     public String addProfesor(Model model) {
         model.addAttribute("profesor", new ProfesotDto());
-        return "profesor-add";
+        return "profesores/profesor-add";
     }
 
     @PostMapping("/save")
@@ -49,7 +54,7 @@ public class ProfesorController {
                                        Model model) {
         Profesor profesorActual = profesorRepository.findById(id_profesor).get();
         model.addAttribute("profesor", profesorActual);
-        return "profesor-edit";
+        return "profesores/profesor-edit";
     }
 
     @PostMapping("/update/{id_profesor}")
@@ -66,7 +71,7 @@ public class ProfesorController {
     public String getProfesoresList(Model model) {
         List<Profesor> profesores = profesorService.getAll();
         model.addAttribute("profesores", profesores);
-        return "profesores";
+        return "profesores/profesores";
     }
 
     @GetMapping("/delete/{id_profesor}")
@@ -77,6 +82,22 @@ public class ProfesorController {
             profesorService.delete(profesorActual);
 
             return "redirect:/profesores";
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("error", e);
+            return "error";
+        }
+    }
+
+    @GetMapping("/{id_profesor}")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public String getProfesorDetail(@PathVariable Long id_profesor, Model model) {
+        try {
+            Profesor profesor = profesorRepository.findById(id_profesor).get();
+            model.addAttribute("profesor", profesor);
+            List<Curso> cursos = cursoRepository.findAllByProfesor(profesor);
+            model.addAttribute("cursos", cursos);
+            return "profesores/profesor-detail";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("error", e);

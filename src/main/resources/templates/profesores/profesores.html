@@ -44,24 +44,38 @@
                         </thead>
                         <tbody>
                         <tr th:each="profesor : ${profesores}">
+
                             <th scope="row" th:text="${profesor.id_profesor}"></th>
                             <td th:text="${profesor.nomProfesor}"></td>
                             <td th:text="${profesor.apeProfesor}"></td>
                             <td th:text="${profesor.correoProfesor}"></td>
                             <td th:text="${profesor.descProfesor}"></td>
 
-                            <td sec:authorize="hasRole('ROLE_ADMIN')">
+                            <td sec:authorize="hasRole('ROLE_USER')">
                                 <div>
+                                    <span>
+                                    <a  class="btn-floating waves-effect waves-light btn-small"
+                                       th:href="|/profesores/${profesor.id_profesor}|"><i
+                                            class="material-icons">chevron_right
+                                    </i></a>
+                                    </span>
+                                    <span sec:authorize="hasRole('ROLE_ADMIN')">
                                     <a th:href="@{/profesores/edit/{id_profesor}
                                     (id_profesor=${profesor.id_profesor})}"
-                                       class="waves-effect waves-light btn-small">Editar
+                                       class="btn-floating waves-effect waves-light btn-small yellow darken-1"><i
+                                            class="material-icons">edit</i>
                                     </a>
+                                    </span>
+                                    <span sec:authorize="hasRole('ROLE_ADMIN')">
                                     <a th:href="@{/profesores/delete/{id_profesor}
                                 (id_profesor=${profesor.id_profesor})}"
-                                       class="waves-effect waves-light btn-small red lighten-1">Eliminar
+                                       class="btn-floating waves-effect waves-light btn-small red lighten-1"><i
+                                            class="material-icons">delete_forever</i>
                                     </a>
+                                    </span>
                                 </div>
                             </td>
+
                         </tr>
                         </tbody>
                     </table>
