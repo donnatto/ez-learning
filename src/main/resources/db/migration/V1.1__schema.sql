@@ -5,6 +5,7 @@ CREATE TABLE user (
   nombre VARCHAR(128) NOT NULL,
   apellido VARCHAR(128) NOT NULL,
   email VARCHAR(128) NOT NULL UNIQUE,
+  fecha_registro DATE NOT NULL
 );
 
 CREATE TABLE auth_user_group (
@@ -20,7 +21,8 @@ CREATE TABLE profesor (
     nombre VARCHAR(128) NOT NULL,
     apellido VARCHAR(128) NOT NULL,
     correo VARCHAR(128) NOT NULL,
-    descripcion VARCHAR(256) NOT NULL
+    descripcion VARCHAR(256) NOT NULL,
+    detalle VARCHAR(1024),
 );
 
 CREATE TABLE curso (
@@ -30,14 +32,15 @@ CREATE TABLE curso (
   detalle VARCHAR(1024),
   dificultad VARCHAR(128) NOT NULL,
   profesor_id BIGINT NOT NULL,
-  CONSTRAINT curso_fk FOREIGN KEY(profesor_id) REFERENCES profesor(profesor_id),
+  url VARCHAR(256),
+  CONSTRAINT curso_fk FOREIGN KEY(profesor_id) REFERENCES profesor(profesor_id)
 );
 
--- CREATE TABLE matricula (
---     matricula_id BIGINT AUTO_INCREMENT PRIMARY KEY,
---     user_id BIGINT NOT NULL,
---     curso_id BIGINT NOT NULL,
---     fecha DATE NOT NULL,
---     CONSTRAINT matricula_user_fk FOREIGN KEY(user_id) REFERENCES user(user_id),
---     CONSTRAINT matricula_curso_fk FOREIGN KEY(curso_id) REFERENCES curso(curso_id)
--- )
+CREATE TABLE matricula (
+    matricula_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id BIGINT NOT NULL,
+    curso_id BIGINT NOT NULL,
+    fecha DATE NOT NULL,
+    CONSTRAINT matricula_user_fk FOREIGN KEY(user_id) REFERENCES user(user_id),
+    CONSTRAINT matricula_curso_fk FOREIGN KEY(curso_id) REFERENCES curso(curso_id)
+);

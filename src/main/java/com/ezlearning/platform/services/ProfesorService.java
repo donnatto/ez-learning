@@ -1,15 +1,11 @@
 package com.ezlearning.platform.services;
 
 import com.ezlearning.platform.dto.ProfesotDto;
-import com.ezlearning.platform.model.Curso;
 import com.ezlearning.platform.model.Profesor;
-import com.ezlearning.platform.model.Usuario;
 import com.ezlearning.platform.repositories.ProfesorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service

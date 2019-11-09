@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @Service
 public class UserServiceImpl {
 
@@ -32,7 +34,8 @@ public class UserServiceImpl {
         String nombre = userDto.getNombre();
         String apellido = userDto.getApellido();
         String email = userDto.getEmail();
-        User user = new User(username, password, nombre, apellido, email);
+        LocalDate fecha = LocalDate.now();
+        User user = new User(username, password, nombre, apellido, email, fecha);
         AuthGroup group = new AuthGroup();
 
         group.setUsername(userDto.getUsername());

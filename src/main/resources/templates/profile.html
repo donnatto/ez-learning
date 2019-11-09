@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:insert="fragments/head">
+
+</head>
+<body>
+<header th:insert="fragments/header">
+</header>
+
+<main>
+    <div class="container">
+        <div class="row mt-3">
+            <!-- Sidebar -->
+            <div class="col s12 m4">
+                <div class="container">
+                    <img class="responsive-img circle z-depth-3" src="/img/user/user-stock.jpg">
+                </div>
+                <ul class="collapsible z-depth-3 mt-3">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">assignment_ind
+                        </i><span th:text="${user.username}"></span></div>
+                        <div class="collapsible-body" th:switch="${numCursos}">
+                            <div th:case="'0'">
+                                Sin cursos.
+                            </div>
+                            <div th:case="'1'">
+                                Matriculado en 1 curso.
+                            </div>
+                            <div th:case="*">
+                                Matriculado en <span th:text="${numCursos}"></span> cursos.</div>
+                            </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">drafts</i>Correo</div>
+                        <div class="collapsible-body"><span th:text="${user.email}">Correo del usuario</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">event_note</i>Fecha de Registro</div>
+                        <div class="collapsible-body"><span th:text="${user.fecha}">Fecha</span></div>
+                    </li>
+                </ul>
+            </div>
+            <!-- User Details -->
+            <div class="col s12 m8">
+                <div class="card z-depth-3">
+                    <div class="card-content teal lighten-2 white-text">
+                        <span class="card-title"><strong
+                                th:text="${user.nombre} + ' ' + ${user.apellido}"></strong></span>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dolorum ducimus eum hic laudantium necessitatibus, quae quam tempora voluptates. Enim, et eum fugiat ipsam natus omnis suscipit voluptate! Deleniti, itaque.</p>
+                    </div>
+                    <div class="card-action">
+                        <!-- Cursos -->
+                        <h5 class="teal-text mb-4">Cursos Matriculados</h5>
+                        <div th:switch="${numCursos}">
+                            <div th:case="'0'" class="mb-3">
+                                Todavía no está matriculado en ningún curso.
+                            </div>
+                            <div th:case="*">
+                                <div class="mb-3" th:each="matricula:${matriculas}">
+                                    <a th:href="|/cursos/${matricula.curso.id_curso}|"><strong
+                                            th:text="${matricula.curso.nomCurso}">Cursos
+                                    </strong> Dictado por <strong
+                                            th:text="${matricula.curso.profesor.nomProfesor} + ' ' + ${matricula.curso.profesor.apeProfesor}"></strong> desde <strong th:text="${matricula.fecha_matricula}"></strong></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<br><br>
+<footer class="page-footer teal" th:insert="fragments/footer">
+
+</footer>
+
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="/js/materialize.js"></script>
+<script src="/js/init.js"></script>
+
+</body>
+</html>

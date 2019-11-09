@@ -31,7 +31,10 @@ public class Curso {
     private String detalleCurso;
 
     @Column(name = "dificultad")
-    private String dificultarCurso;
+    private String dificultadCurso;
+
+    @Column(name = "url")
+    private String urlCurso;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "profesor_id", nullable = false)
