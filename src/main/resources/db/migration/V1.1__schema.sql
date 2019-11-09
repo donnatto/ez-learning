@@ -22,7 +22,7 @@ CREATE TABLE profesor (
     apellido VARCHAR(128) NOT NULL,
     correo VARCHAR(128) NOT NULL,
     descripcion VARCHAR(256) NOT NULL,
-    detalle VARCHAR(1024),
+    detalle VARCHAR(1024)
 );
 
 CREATE TABLE curso (
