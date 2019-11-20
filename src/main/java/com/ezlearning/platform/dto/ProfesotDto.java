@@ -12,4 +12,5 @@ public class ProfesotDto {
     private String apellido;
     private String correo;
     private String descripcion;
+    private String imgurl;
 }

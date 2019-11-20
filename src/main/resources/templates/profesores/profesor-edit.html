@@ -17,18 +17,10 @@
                 >
 
                     <div class="input-field">
-                        <label for="id_profesor">Id de Profesor</label>
-                        <input type="text" class="class-controller"
-                               id="id_profesor" readonly
-                               th:field="*{id_profesor}"
-                        >
-                    </div>
-
-                    <div class="input-field">
                         <label for="nom_profesor">Nombre</label>
                         <input type="text" class="class-controller"
                                id="nom_profesor"
-                               th:field="*{nomProfesor}" autofocus
+                               th:field="*{nomProfesor}" autofocus required
                         >
                     </div>
 
@@ -36,7 +28,7 @@
                         <label for="ape_profesor">Apellido</label>
                         <input type="text" class="class-controller"
                                id="ape_profesor"
-                               th:field="*{apeProfesor}"
+                               th:field="*{apeProfesor}" required
                         >
                     </div>
 
@@ -44,7 +36,7 @@
                         <label for="correo_profesor">Correo Electrónico</label>
                         <input type="text" class="class-controller"
                                id="correo_profesor"
-                               th:field="*{correoProfesor}"
+                               th:field="*{correoProfesor}" required
                         >
                     </div>
 
@@ -52,14 +44,19 @@
                         <label for="descripcion_profesor">Descripción</label>
                         <input type="text" class="class-controller"
                                id="descripcion_profesor"
-                               th:field="*{descProfesor}"
+                               th:field="*{descProfesor}" required
                         >
+                    </div>
+
+                    <div class="input-field">
+                        <label for="imgurl">URL Imagen</label>
+                        <input type="text" class="class-controller" id="imgurl" th:field="*{imgurl}" required>
                     </div>
 
                     <button type="submit" class="btn">
                         Editar Profesor
                     </button>
-                    <a th:href="@{/profesores}" class="btn red lighten-1">Atras</a>
+                    <a th:href="|/profesores/${profesor.id_profesor}|" class="btn red lighten-1">Atras</a>
                 </form>
             </div>
         </div>

@@ -13,29 +13,59 @@
             <div class="section col s12 l6 offset-l3">
                 <form action="#" method="post"
                       th:object="${curso}"
-                      th:action="@{/cursos/save}"
+                      th:action="@{/cursos/add/{id_profesor} (id_profesor=${profesor.id_profesor})}"
                 >
 
                     <div class="input-field">
                         <label for="nom_curso">Nombre de Curso</label>
                         <input type="text" class="class-controller"
                                id="nom_curso"
-                               th:field="*{nomCurso}" autofocus
+                               th:field="*{nomCurso}" autofocus required
                         >
+                    </div>
+
+                    <div class="input-field">
+                        <select th:field="*{dificultad}" id="dificultad" required>
+                            <option th:value="'Facil'" th:text="Facil"></option>
+                            <option th:value="'Intermedio'" th:text="Intermedio"></option>
+                            <option th:value="'Avanzado'" th:text="Avanzado"></option>
+                        </select>
+                        <label>Dificultad</label>
                     </div>
 
                     <div class="input-field">
                         <label for="descripcion_curso">Descripción</label>
                         <input type="text" class="class-controller"
                                id="descripcion_curso"
-                               th:field="*{descCurso}"
+                               th:field="*{descCurso}" required
+                        >
+                    </div>
+
+                    <div class="input-field">
+                        <label for="detalle-curso">Detalle</label>
+                        <textarea th:field="*{detalle}" id="detalle-curso" class="materialize-textarea" required></textarea>
+                    </div>
+
+                    <div class="input-field">
+                        <label for="urlcurso">URL Curso</label>
+                        <input type="text" class="class-controller"
+                               id="urlcurso"
+                               th:field="*{url}" required
+                        >
+                    </div>
+
+                    <div class="input-field">
+                        <label for="urlimagen">URL Imagen Curso</label>
+                        <input type="text" class="class-controller"
+                               id="urlimagen"
+                               th:field="*{imgurl}" required
                         >
                     </div>
 
                     <button type="submit" class="btn">
                         Confirmar
                     </button>
-                    <a th:href="@{/cursos}" class="btn red lighten-1">Atras</a>
+                    <a th:href="@{/profesores/{id_profesor} (id_profesor=${profesor.id_profesor})}" class="btn red lighten-1">Atras</a>
 
                 </form>
             </div>

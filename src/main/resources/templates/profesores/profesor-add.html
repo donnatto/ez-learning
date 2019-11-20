@@ -20,7 +20,7 @@
                         <label for="nom_profesor">Nombre</label>
                         <input type="text" class="class-controller"
                                id="nom_profesor"
-                               th:field="*{nombre}" autofocus
+                               th:field="*{nombre}" autofocus required
                         >
                     </div>
 
@@ -28,7 +28,7 @@
                         <label for="ape_profesor">Apellido</label>
                         <input type="text" class="class-controller"
                                id="ape_profesor"
-                               th:field="*{apellido}"
+                               th:field="*{apellido}" required
                         >
                     </div>
 
@@ -36,7 +36,7 @@
                         <label for="correo_profesor">Correo Electrónico</label>
                         <input type="text" class="class-controller"
                                id="correo_profesor"
-                               th:field="*{correo}"
+                               th:field="*{correo}" required
                         >
                     </div>
 
@@ -44,8 +44,13 @@
                         <label for="descripcion_profesor">Descripción</label>
                         <input type="text" class="class-controller"
                                id="descripcion_profesor"
-                               th:field="*{descripcion}"
+                               th:field="*{descripcion}" required
                         >
+                    </div>
+
+                    <div class="input-field">
+                        <label for="imgurl">URL Imagen</label>
+                        <input type="text" class="class-controller" id="imgurl" th:field="*{imgurl}" required>
                     </div>
 
                     <button type="submit" class="btn">

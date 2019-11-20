@@ -36,14 +36,20 @@ public class Curso {
     @Column(name = "url")
     private String urlCurso;
 
+    private String imgurl;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "profesor_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Profesor profesor;
 
-    public Curso(String nomCurso, String descripcionCurso, Profesor profesor) {
+    public Curso(String nomCurso, String descripcionCurso, String detalleCurso, String dificultadCurso, String urlCurso, String imgurl, Profesor profesor) {
         this.nomCurso = nomCurso;
         this.descripcionCurso = descripcionCurso;
+        this.detalleCurso = detalleCurso;
+        this.dificultadCurso = dificultadCurso;
+        this.urlCurso = urlCurso;
+        this.imgurl = imgurl;
         this.profesor = profesor;
     }
 }

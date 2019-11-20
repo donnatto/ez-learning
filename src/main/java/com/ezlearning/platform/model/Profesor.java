@@ -27,12 +27,18 @@ public class Profesor {
     private String descProfesor;
     @Column(name = "detalle")
     private String detalleProfesor;
+    private String imgurl;
 
 
-    public Profesor(String nomProfesor, String apeProfesor, String correoProfesor, String descProfesor) {
+    public Profesor(String nomProfesor, String apeProfesor, String correoProfesor, String descProfesor, String imgurl) {
         this.nomProfesor = nomProfesor;
         this.apeProfesor = apeProfesor;
         this.correoProfesor = correoProfesor;
         this.descProfesor = descProfesor;
+        this.imgurl = imgurl;
+    }
+
+    public Profesor(String detalleProfesor) {
+        this.detalleProfesor = detalleProfesor;
     }
 }

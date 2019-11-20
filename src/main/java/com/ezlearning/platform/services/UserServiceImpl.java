@@ -34,8 +34,9 @@ public class UserServiceImpl {
         String nombre = userDto.getNombre();
         String apellido = userDto.getApellido();
         String email = userDto.getEmail();
+        String imgurl = userDto.getImgurl();
         LocalDate fecha = LocalDate.now();
-        User user = new User(username, password, nombre, apellido, email, fecha);
+        User user = new User(username, password, nombre, apellido, email, imgurl, fecha);
         AuthGroup group = new AuthGroup();
 
         group.setUsername(userDto.getUsername());
@@ -43,5 +44,24 @@ public class UserServiceImpl {
 
         userRepository.save(user);
         authGroupRepository.save(group);
+    }
+
+    public void update(User user) {
+        User current = userRepository.findByUsername(user.getUsername());
+
+        current.setNombre(user.getNombre());
+        current.setApellido(user.getApellido());
+        current.setEmail(user.getEmail());
+        current.setImgurl(user.getImgurl());
+
+        userRepository.save(current);
+    }
+
+    public void patch(User user) {
+        User current = userRepository.findByUsername(user.getUsername());
+
+        current.setDetalle(user.getDetalle());
+
+        userRepository.save(current);
     }
 }

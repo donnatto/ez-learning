@@ -26,17 +26,25 @@ public class CursoService{
         }
         String nomCurso = cursoDto.getNomCurso();
         String descCurso = cursoDto.getDescCurso();
+        String detalleCurso = cursoDto.getDetalle();
+        String difCurso = cursoDto.getDificultad();
+        String urlCurso = cursoDto.getUrl();
+        String imgurl = cursoDto.getImgurl();
         Profesor profesor = cursoDto.getProfesor();
-        Curso curso = new Curso(nomCurso, descCurso, profesor);
+        Curso curso = new Curso(nomCurso, descCurso, detalleCurso, difCurso, urlCurso, imgurl, profesor);
 
         cursoRepository.save(curso);
     }
 
-    public void update(Curso curso) {
-        Curso currentCurso = cursoRepository.findById(curso.getId_curso()).get();
+    public void update(Curso curso, Long id_curso) {
+        Curso currentCurso = cursoRepository.findById(id_curso).get();
 
             currentCurso.setNomCurso(curso.getNomCurso());
             currentCurso.setDescripcionCurso(curso.getDescripcionCurso());
+            currentCurso.setDetalleCurso(curso.getDetalleCurso());
+            currentCurso.setDificultadCurso(curso.getDificultadCurso());
+            currentCurso.setUrlCurso(curso.getUrlCurso());
+            currentCurso.setImgurl(curso.getImgurl());
             currentCurso.setProfesor(curso.getProfesor());
 
             cursoRepository.save(currentCurso);

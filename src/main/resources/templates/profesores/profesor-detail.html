@@ -13,7 +13,8 @@
             <!-- Sidebar -->
             <div class="col s12 m4">
                 <div class="container">
-                    <img class="responsive-img circle z-depth-3" th:src="|/img/instructors/${profesor.id_profesor}.jpg|">
+                    <img th:if="${profesor.id_profesor}" class="responsive-img circle z-depth-3" th:src="${profesor.imgurl}">
+                    <img th:unless="${profesor.id_profesor}" class="responsive-img circle z-depth-3" src="/img/instructors/instructor-stock.png">
                 </div>
                 <ul class="collapsible z-depth-3 mt-3">
                     <li>
@@ -33,16 +34,51 @@
                 <div class="card z-depth-3">
                     <div class="card-content teal lighten-2 white-text">
                         <span class="card-title"><strong
-                                th:text="${profesor.nomProfesor} + ' ' + ${profesor.apeProfesor}"></strong></span>
-                        <p th:text="${profesor.detalleProfesor}"></p>
+                                th:text="${profesor.nomProfesor} + ' ' + ${profesor.apeProfesor}"></strong>
+                        <span sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <a th:href="@{/profesores/edit/{id_profesor}
+                                    (id_profesor=${profesor.id_profesor})}"
+                                       class="btn-floating waves-effect waves-light btn-small yellow darken-1"><i
+                                            class="material-icons">edit</i>
+                                    </a>
+                                    </span>
+                        </span>
+                        <p th:if="${profesor.detalleProfesor}">
+                            <span th:text="${profesor.detalleProfesor}">Detalle</span>
+                            <a sec:authorize="hasRole('ROLE_ADMIN')" class="btn-floating btn-small red lighten-1 waves-effect waves-light modal-trigger" href="#modal-detalle"><i class="material-icons">edit</i></a>
+                        </p>
+                        <!-- Modal Trigger -->
+                        <p th:unless="${profesor.detalleProfesor}">
+                            <a class="btn-floating btn-small red lighten-1 modal-trigger waves-effect waves-light" href="#modal-detalle"><i class="material-icons">add</i></a>
+                        </p>
+                    </div>
+                    <!-- Modal Sctructure -->
+                    <div id="modal-detalle" class="modal">
+                        <form th:action="@{/profesores/patch/{id_profesor} (id_profesor=${profesor.id_profesor})}" th:object="${profesor}" method="post">
+
+                        <div class="modal-content">
+                            <h4 class="teal-text">Cuéntanos sobre ti</h4>
+                            <div class="input-field">
+                                <label for="detalle-profesor">Detalle</label>
+                                <textarea th:field="*{detalleProfesor}" id="detalle-profesor" class="materialize-textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-red btn-flat red-text">Cancelar</a>
+                            <button type="submit" class="modal-close waves-effect waves-green btn-flat teal-text">
+                                Confirmar</button>
+                        </div>
+                        </form>
                     </div>
                     <div class="card-action">
                         <!-- Cursos -->
-                        <h5 class="teal-text mb-4">Cursos</h5>
+                        <h5 class="teal-text mb-4">Cursos <span sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a th:href="@{/cursos/add/{id_profesor} (id_profesor=${profesor.id_profesor})}" class="btn-floating btn-small waves-effect waves-light lighten-1"><i class="material-icons">add</i></a>
+                        </span>
+                        </h5>
                         <div class="mb-3" th:each="curso:${cursos}">
                             <a th:href="|/cursos/${curso.id_curso}|"><strong th:text="${curso.nomCurso}">Cursos</strong></a>
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:insert="fragments/head">
 </head>
 
@@ -54,7 +55,7 @@
                             <td sec:authorize="hasRole('ROLE_USER')">
                                 <div>
                                     <span>
-                                    <a  class="btn-floating waves-effect waves-light btn-small"
+                                    <a class="btn-floating waves-effect waves-light btn-small"
                                        th:href="|/profesores/${profesor.id_profesor}|"><i
                                             class="material-icons">chevron_right
                                     </i></a>

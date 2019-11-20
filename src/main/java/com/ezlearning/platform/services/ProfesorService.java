@@ -23,7 +23,8 @@ public class ProfesorService {
         String apellido = profesotDto.getApellido();
         String correo = profesotDto.getCorreo();
         String descripcion = profesotDto.getDescripcion();
-        Profesor profesor = new Profesor(nombre, apellido, correo, descripcion);
+        String imgurl = profesotDto.getImgurl();
+        Profesor profesor = new Profesor(nombre, apellido, correo, descripcion, imgurl);
 
         profesorRepository.save(profesor);
     }
@@ -39,8 +40,17 @@ public class ProfesorService {
         currentProfesor.setApeProfesor(profesor.getApeProfesor());
         currentProfesor.setCorreoProfesor(profesor.getCorreoProfesor());
         currentProfesor.setDescProfesor(profesor.getDescProfesor());
+        currentProfesor.setImgurl(profesor.getImgurl());
 
         profesorRepository.save(currentProfesor);
+    }
+
+    public void patch(Profesor profesor) {
+        Profesor current = profesorRepository.findById(profesor.getId_profesor()).get();
+
+        current.setDetalleProfesor(profesor.getDetalleProfesor());
+
+        profesorRepository.save(current);
     }
 
     public void delete(Profesor profesor) {

@@ -11,5 +11,9 @@ import lombok.NoArgsConstructor;
 public class CursoDto {
     private String nomCurso;
     private String descCurso;
+    private String dificultad;
+    private String detalle;
+    private String url;
+    private String imgurl;
     private Profesor profesor;
 }

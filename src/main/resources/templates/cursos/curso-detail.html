@@ -35,7 +35,7 @@
                         <div class="collapsible-body">
                             <a th:href="@{/profesores/{id_profesor}(id_profesor=${curso.profesor.id_profesor})}">
                                 <div class="row">
-                                <img th:src="|/img/instructors/${curso.profesor.id_profesor}.jpg|"
+                                <img th:src="${curso.profesor.imgurl}"
                                      class="col s4 m12 circle responsive-img"
                                      alt="instructor image"/>
                                 <div class="col s8 m12 teal-text mt-3 center-align">
@@ -52,9 +52,24 @@
             <div class="col s12 m8 l9">
                 <div class="card z-depth-3">
                     <div class="card-image">
-                        <img th:src="|/img/courses/${curso.id_curso}.jpg|" alt="course image">
-                        <span id="detail-card-title" class="card-title" th:text="${curso.nomCurso}">Nombre del
-                            Curso</span>
+                        <img th:src="${curso.imgurl}" alt="course image">
+                        <span id="detail-card-title" class="card-title"><strong th:text="${curso.nomCurso}">Nombre del
+                            Curso</strong>
+                            <span sec:authorize="hasRole('ROLE_ADMIN')">
+                                        <a th:href="@{/cursos/edit/{id_curso}
+                                        (id_curso=${curso.id_curso})}"
+                                           class="btn-floating waves-effect waves-light btn-small yellow darken-1"><i
+                                                class="material-icons">edit</i>
+                                        </a>
+                            </span>
+                            <span sec:authorize="hasRole('ROLE_ADMIN')">
+                                        <a th:href="@{/cursos/delete/{id_curso}
+                                        (id_curso=${curso.id_curso})}"
+                                           class="btn-floating waves-effect waves-light btn-small red lighten-1"><i
+                                                class="material-icons">delete_forever</i>
+                                        </a>
+                            </span>
+                        </span>
                     </div>
                     <div class="card-content" th:text="${curso.detalleCurso}">
                         <p>Detalle del Curso</p>

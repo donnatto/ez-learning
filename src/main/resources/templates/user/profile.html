@@ -13,7 +13,7 @@
             <!-- Sidebar -->
             <div class="col s12 m4">
                 <div class="container">
-                    <img class="responsive-img circle z-depth-3" src="/img/user/user-stock.jpg">
+                    <img class="responsive-img circle z-depth-3" th:src="${user.imgurl}">
                 </div>
                 <ul class="collapsible z-depth-3 mt-3">
                     <li>
@@ -36,7 +36,7 @@
                     </li>
                     <li>
                         <div class="collapsible-header"><i class="material-icons">event_note</i>Fecha de Registro</div>
-                        <div class="collapsible-body"><span th:text="${user.fecha}">Fecha</span></div>
+                        <div class="collapsible-body">Alumno desde <span th:text="${user.fecha}">Fecha</span></div>
                     </li>
                 </ul>
             </div>
@@ -45,8 +45,38 @@
                 <div class="card z-depth-3">
                     <div class="card-content teal lighten-2 white-text">
                         <span class="card-title"><strong
-                                th:text="${user.nombre} + ' ' + ${user.apellido}"></strong></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate dolorum ducimus eum hic laudantium necessitatibus, quae quam tempora voluptates. Enim, et eum fugiat ipsam natus omnis suscipit voluptate! Deleniti, itaque.</p>
+                                th:text="${user.nombre} + ' ' + ${user.apellido}"></strong>
+                            <a sec:authorize="isAuthenticated()" th:href="@{/user/edit/{id_user} (id_user=${user.id})}"
+                            class="btn-floating btn-small yellow waves-effect waves-light">
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </span>
+                        <p th:if="${user.detalle}">
+                            <span th:text="${user.detalle}"></span>
+                            <a class="btn-floating btn-small red lighten-1 waves-effect waves-light modal-trigger" href="#modal-detalle"><i class="material-icons">edit</i></a>
+                        </p>
+                        <!-- Modal Trigger -->
+                        <p th:unless="${user.detalle}">
+                            <a class="btn-floating red lighten-1 btn-small modal-trigger" href="#modal-detalle"><i class="material-icons">add</i></a>
+                        </p>
+                        <!-- Modal Sctructure -->
+                        <div id="modal-detalle" class="modal">
+                            <form th:action="@{user/patch/{id_user} (id_user=${user.id})}" method="post" th:object="${user}">
+
+                                <div class="modal-content">
+                                    <h4 class="teal-text">Cuéntanos sobre ti</h4>
+                                    <div class="input-field">
+                                        <label for="detalle-user">Detalle</label>
+                                        <textarea th:field="*{detalle}" id="detalle-user" class="materialize-textarea"></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-red btn-flat red-text">Cancelar</a>
+                                    <button type="submit" class="modal-close waves-effect waves-green btn-flat teal-text">
+                                        Confirmar</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div class="card-action">
                         <!-- Cursos -->
