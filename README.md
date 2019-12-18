@@ -36,7 +36,8 @@ The web application is hosted in [Heroku](https://www.heroku.com/), while the My
 
 Reach out to me at:
 
-- My personal blog : [blog.donnatto.me](https://blog.donnatto.me)
+- My personal page : [donnatto.me](https://donnatto.me)
+- My Blog : [blog.donnatto.me](https://blog.donnatto.me)
 - LinkedIn : [linkedin.com/in/donnatto](https://linkedin.com/in/donnatto)
 - Instagram : [@donnatto_](https://instagram.com/donnatto_)
 - Email : [contact@donnatto.tech](mailto:contact@donnatto.tech)
