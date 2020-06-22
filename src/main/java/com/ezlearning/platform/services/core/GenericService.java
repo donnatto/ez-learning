@@ -1,4 +1,4 @@
-package com.ezlearning.platform.services;
+package com.ezlearning.platform.services.core;
 
 import java.util.List;
 

@@ -2,8 +2,8 @@ package com.ezlearning.platform.controller;
 
 import com.ezlearning.platform.model.Curso;
 import com.ezlearning.platform.model.Profesor;
-import com.ezlearning.platform.services.CursoService;
-import com.ezlearning.platform.services.ProfesorService;
+import com.ezlearning.platform.services.core.impl.CursoService;
+import com.ezlearning.platform.services.core.impl.ProfesorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

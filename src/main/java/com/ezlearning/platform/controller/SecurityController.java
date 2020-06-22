@@ -4,7 +4,7 @@ import com.ezlearning.platform.auth.User;
 import com.ezlearning.platform.auth.UserRepository;
 import com.ezlearning.platform.model.Matricula;
 import com.ezlearning.platform.repositories.MatriculaRepository;
-import com.ezlearning.platform.services.UserServiceImpl;
+import com.ezlearning.platform.services.core.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 

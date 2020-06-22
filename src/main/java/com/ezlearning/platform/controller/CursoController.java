@@ -8,7 +8,7 @@ import com.ezlearning.platform.model.Profesor;
 import com.ezlearning.platform.repositories.CursoRepository;
 import com.ezlearning.platform.repositories.MatriculaRepository;
 import com.ezlearning.platform.repositories.ProfesorRepository;
-import com.ezlearning.platform.services.CursoService;
+import com.ezlearning.platform.services.core.impl.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Controller

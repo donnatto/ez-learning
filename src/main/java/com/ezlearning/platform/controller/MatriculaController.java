@@ -4,7 +4,7 @@ import com.ezlearning.platform.auth.User;
 import com.ezlearning.platform.auth.UserRepository;
 import com.ezlearning.platform.model.Curso;
 import com.ezlearning.platform.repositories.CursoRepository;
-import com.ezlearning.platform.services.MatriculaService;
+import com.ezlearning.platform.services.core.impl.MatriculaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;

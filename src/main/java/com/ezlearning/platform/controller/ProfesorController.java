@@ -5,7 +5,7 @@ import com.ezlearning.platform.model.Curso;
 import com.ezlearning.platform.model.Profesor;
 import com.ezlearning.platform.repositories.CursoRepository;
 import com.ezlearning.platform.repositories.ProfesorRepository;
-import com.ezlearning.platform.services.ProfesorService;
+import com.ezlearning.platform.services.core.impl.ProfesorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

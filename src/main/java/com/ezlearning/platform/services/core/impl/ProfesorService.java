@@ -1,4 +1,4 @@
-package com.ezlearning.platform.services;
+package com.ezlearning.platform.services.core.impl;
 
 import com.ezlearning.platform.dto.ProfesotDto;
 import com.ezlearning.platform.model.Profesor;
