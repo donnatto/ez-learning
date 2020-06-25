@@ -19,26 +19,13 @@ import javax.annotation.PostConstruct;
 @Slf4j
 public class AmazonS3ClientServiceImpl implements AmazonS3ClientService {
 
-    @Value("${AWS_ACCESS_KEY}")
-    private String accessKey;
-    @Value("${AWS_SECRET_KEY}")
-    private String secretKey;
-    @Value("${AWS_REGION}")
-    private String region;
-    @Value("${AWS_BUCKET_NAME}")
+    @Value("${aws.s3.bucket}")
     String bucketName;
 
     private AmazonS3 s3Client;
 
-    @PostConstruct
-    public void getAmazonS3Client() {
-        final BasicAWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
-
-        s3Client = AmazonS3ClientBuilder
-                .standard()
-                .withRegion(Regions.fromName(region))
-                .withCredentials(new AWSStaticCredentialsProvider(credentials))
-                .build();
+    public AmazonS3ClientServiceImpl(AmazonS3 s3Client) {
+        this.s3Client = s3Client;
     }
 
     @Override
