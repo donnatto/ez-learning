@@ -21,7 +21,7 @@ public class AwsController {
 
     @GetMapping("/create")
     String createBucket() {
-        log.info("/aws/create");
+        log.info("Get request to /aws/create");
         return service.checkS3Bucket();
     }
 }
