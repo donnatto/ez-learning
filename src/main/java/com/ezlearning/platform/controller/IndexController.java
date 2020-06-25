@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
     @GetMapping({"/", "/index"})
     public String index() {
-        log.info("Invoked once");
+        log.info("Home page");
         return "index";
     }
 

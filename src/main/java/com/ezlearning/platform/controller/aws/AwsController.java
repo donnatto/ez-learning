@@ -20,7 +20,6 @@ public class AwsController {
     }
 
     @GetMapping("/create")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     String createBucket() {
         log.info("/aws/create");
         return service.checkS3Bucket();
