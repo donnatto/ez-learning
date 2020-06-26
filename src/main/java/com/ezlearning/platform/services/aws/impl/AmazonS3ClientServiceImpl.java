@@ -1,18 +1,14 @@
 package com.ezlearning.platform.services.aws.impl;
 
-import com.amazonaws.auth.AWSCredentialsProvider;
-import com.amazonaws.auth.AWSStaticCredentialsProvider;
-import com.amazonaws.auth.BasicAWSCredentials;
-import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.*;
 import com.ezlearning.platform.services.aws.AmazonS3ClientService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
+import java.io.File;
+import java.net.URL;
 
 
 @Service
@@ -29,19 +25,47 @@ public class AmazonS3ClientServiceImpl implements AmazonS3ClientService {
     }
 
     @Override
-    public String checkS3Bucket() {
-        String response = null;
+    public int createBucket() {
+        int response;
 
-        boolean bucketExistV2 = s3Client.doesBucketExistV2(bucketName);
-
-        if (!bucketExistV2) {
-            log.info("Bucket no existe");
-            response = "No existe: " + bucketName;
-        } else {
-            log.info("Bucket existente");
-            response = "Bucket existente: " + bucketName;
+        try {
+            if (!s3Client.doesBucketExistV2(bucketName)) {
+                CreateBucketRequest request = new CreateBucketRequest(bucketName)
+                        .withCannedAcl(CannedAccessControlList.BucketOwnerFullControl);
+                s3Client.createBucket(request);
+                response = 0;
+            } else {
+                response = 1;
+            }
+        } catch (Exception e) {
+            log.error("Error creating bucket: {}", e.getMessage());
+            response = 1;
         }
 
         return response;
+    }
+
+    @Override
+    public URL upload(File file, String filename) {
+        URL response = null;
+        log.info("Inside upload method");
+
+        try {
+            log.info("Checking if object exists");
+            if (!s3Client.doesObjectExist(bucketName, filename)) {
+                log.info("Making request");
+                PutObjectRequest request = new PutObjectRequest(bucketName, filename, file)
+                        .withCannedAcl(CannedAccessControlList.PublicRead);
+                log.info("sending request");
+                s3Client.putObject(request);
+                log.info("getting url");
+                response = s3Client.getUrl(bucketName, filename);
+            }
+        } catch (Exception e) {
+            log.error("Error uploading file: {}", e.getMessage());
+        }
+
+        return response;
+
     }
 }

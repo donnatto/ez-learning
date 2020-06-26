@@ -3,32 +3,28 @@ package com.ezlearning.platform.controller.aws;
 import com.ezlearning.platform.services.aws.AmazonS3ClientService;
 import com.ezlearning.platform.services.aws.AmazonSqsClientService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/aws")
+@RequestMapping("/s3")
+@PreAuthorize("hasRole('ROLE_USER')")
 @Slf4j
-public class AwsController {
+public class AwsS3Controller {
 
     AmazonS3ClientService s3Service;
-    AmazonSqsClientService sqsService;
 
 
-    public AwsController(AmazonS3ClientService service) {
+    public AwsS3Controller(AmazonS3ClientService service) {
         this.s3Service = service;
     }
 
     @GetMapping("/createbucket")
-    String createBucket() {
+    int createBucket() {
         log.info("Get request to /aws/createbucket");
-        return s3Service.checkS3Bucket();
+        return s3Service.createBucket();
     }
 
-    @GetMapping("/createqueue")
-    String createQueue() {
-        log.info("Get request to /aws/createqueue");
-        return sqsService.createQueue();
-    }
 }

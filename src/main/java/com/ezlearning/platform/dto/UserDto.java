@@ -3,6 +3,7 @@ package com.ezlearning.platform.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -13,5 +14,5 @@ public class UserDto {
     private String nombre;
     private String apellido;
     private String email;
-    private String imgurl;
+    private MultipartFile imgurl;
 }
