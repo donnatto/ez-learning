@@ -36,11 +36,11 @@ The web application is hosted in [Heroku](https://www.heroku.com/), while the My
 
 Reach out to me at:
 
-- My personal page : [donnatto.me](https://donnatto.com)
-- My Blog : [blog.donnatto.me](https://blog.donnatto.com)
+- My personal page : [donnatto.com](https://donnatto.com)
+- My Blog : [blog.donnatto.com](https://blog.donnatto.com)
 - LinkedIn : [linkedin.com/in/donnatto](https://linkedin.com/in/donnatto)
 - Instagram : [@donnatto_](https://instagram.com/donnatto_)
-- Email : [contact@donnatto.tech](mailto:contact@donnatto.com)
+- Email : [contact@donnatto.com](mailto:contact@donnatto.com)
 
 ---
 
