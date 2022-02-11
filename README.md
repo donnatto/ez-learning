@@ -12,6 +12,15 @@
 
 ---
 
+## Start the Application
+
+To start the application locally with the default profile (dev) run this command
+```shell
+./mvnw spring-boot:run
+```
+
+---
+
 ## General Info
 
 This application started as an academic project in August 2019, developed for the Business Applications Development II course at Isil, Lima, Perú.
