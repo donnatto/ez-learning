@@ -4,7 +4,8 @@ import com.ezlearning.platform.auth.User;
 import com.ezlearning.platform.auth.UserRepository;
 import com.ezlearning.platform.model.Matricula;
 import com.ezlearning.platform.repositories.MatriculaRepository;
-import com.ezlearning.platform.services.core.impl.UserServiceImpl;
+import com.ezlearning.platform.services.core.impl.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -18,18 +19,12 @@ import java.util.List;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_USER')")
+@AllArgsConstructor
 public class SecurityController {
 
-    private UserRepository userRepository;
-    private MatriculaRepository matriculaRepository;
-    private UserServiceImpl userService;
-
-    @Autowired
-    public SecurityController(UserRepository userRepository, MatriculaRepository matriculaRepository, UserServiceImpl userService) {
-        this.userRepository = userRepository;
-        this.matriculaRepository = matriculaRepository;
-        this.userService = userService;
-    }
+    private final UserRepository userRepository;
+    private final MatriculaRepository matriculaRepository;
+    private final UserService userService;
 
     @GetMapping("/profile")
     public String getUserProfile(Authentication authentication, Model model) {
@@ -49,12 +44,12 @@ public class SecurityController {
         }
     }
 
-    @GetMapping("/user/edit/{id_user}")
-    public String getForEdit(@PathVariable Long id_user, Authentication authentication, Model model) {
+    @GetMapping("/user/edit/{userID}")
+    public String getForEdit(@PathVariable Long userID, Authentication authentication, Model model) {
 
         try {
             String currentusername = authentication.getName();
-            User current = userRepository.findById(id_user).get();
+            User current = userRepository.findById(userID).get();
             if (currentusername.equals(current.getUsername())) {
             model.addAttribute(current);
             return "user/user-edit";
@@ -68,11 +63,11 @@ public class SecurityController {
         }
     }
 
-    @PostMapping("/user/edit/{id_user}")
-    public String updateUser(@PathVariable Long id_user, Authentication authentication, User user, Model model) {
+    @PostMapping("/user/edit/{userID}")
+    public String updateUser(@PathVariable Long userID, Authentication authentication, User user, Model model) {
 
         try {
-            User current = userRepository.findById(id_user).get();
+            User current = userRepository.findById(userID).get();
             String currentusername = authentication.getName();
             if (currentusername.equals(current.getUsername())) {
                 current.setNombre(user.getNombre());

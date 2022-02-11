@@ -15,7 +15,6 @@
                 <form method="post"
                       th:object="${userdto}"
                       th:action="@{/register}"
-                      enctype="multipart/form-data"
                 >
                     <div th:if="${param.error}">
                         <h5 class="center red-text text-lighten-1">${param.error}</h5>
@@ -23,12 +22,9 @@
                     <br>
 
                     <div class="file-field input-field">
-                        <div class="btn">
-                            <span>Imagen de Perfil</span>
-                            <input type="file" id="imgurl" name="imgurl" required>
-                        </div>
-                        <div class="file-path-wrapper">
-                            <input class="file-path validate" type="text">
+                        <div class="input-field">
+                            <label for="imgurl">URL Imagen de Perfil</label>
+                            <input type="text" class="class-controller" id="imgurl" th:field="*{imgurl}" required>
                         </div>
                     </div>
 
