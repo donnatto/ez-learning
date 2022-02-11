@@ -14,7 +14,7 @@
 
 ## Start the Application
 
-To start the application locally with the default profile (dev) run this command
+To start the application locally with the default profile (dev) run this command at the /ez-learning folder
 ```shell
 ./mvnw spring-boot:run
 ```
