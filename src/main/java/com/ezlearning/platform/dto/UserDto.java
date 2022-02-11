@@ -14,5 +14,5 @@ public class UserDto {
     private String nombre;
     private String apellido;
     private String email;
-    private MultipartFile imgurl;
+    private String imgurl;
 }
